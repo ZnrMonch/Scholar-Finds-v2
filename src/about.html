@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholar Finds</title>
+    <link rel="shortcut icon" href="resources/sf-logo.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</head>
+<body class="bg-[url('resources/lib-bg.jpg')] font-nunito text-white flex">
+    <div class="fixed inset-0 bg-black/50 h-full z-0 max-tablet:hidden"></div>
+    <!-- DESKTOP SIDE NAVIGATIONS -->
+    <header class="group fixed top-0 left-0 pt-10 pb-10 w-20 hover:w-60 duration-500 ease-out h-screen flex max-tablet:hidden flex-col justify-between bg-ash/85 backdrop-blur-md shadow-[var(--around-shadow-md)] select-none text-off-white z-10">
+        <div class="w-full h-35">
+            <img src="resources/umak.svg" alt="UMak Logo" class="mt-3 ml-3.5 size-12 inline-block">
+            <img src="resources/ccis.svg" alt="CCIS Logo" class="mt-3 ml-3.5 size-12 inline-block">  
+            <img src="resources/sf-logo.svg" alt="Scholar Finds Logo" class="mt-3 ml-3.5 size-12 inline-block">
+            <a href="index.html" class="outline-none"><h1 class=" m-3.5 whitespace-nowrap overflow-hidden text-3xl opacity-0 group-hover:opacity-100 duration-500 font-semibold">Scholar Finds</h1></a>
+        </div>
+        <nav>
+            <ul class="flex flex-col gap-2">
+                <li><a href="index.html" class="flex items-center gap-8 pl-5 py-2 hover:opacity-60 duration-200 ease-linear">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="min-w-8 w-8">
+                        <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                        <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                    </svg> 
+                    <p class="text-lg overflow-hidden text-clip">Home</p>
+                </a></li>
+                <li><a href="about.html" class="flex items-center gap-8 pl-5 py-2 hover:opacity-60 duration-200 ease-linear">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="min-w-8 w-8">
+                        <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z" clip-rule="evenodd" />
+                        <path d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z" />
+                    </svg>                       
+                    <p class="text-lg overflow-hidden text-clip">About</p>
+                </a></li>
+                <li><a href="contact.php" class="flex items-center gap-8 pl-5 py-2 hover:opacity-60 duration-200 ease-linear">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="min-w-8 w-8">
+                        <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd" />
+                    </svg>                      
+                    <p class="text-lg overflow-hidden text-clip">Contact</p>
+                </a></li>
+                <li><a href="library.php" class="flex items-center gap-8 pl-5 py-2 hover:opacity-60 duration-200 ease-linear">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="min-w-8 w-8">
+                        <path d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533ZM12.75 20.636A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z" />
+                    </svg>                      
+                    <p class="text-lg overflow-hidden text-clip">Library</p>
+                </a></li>
+            </ul>
+        </nav>
+        <menu class="flex flex-col gap-2">
+            <li><a href="profile.php" class="flex items-center gap-8 pl-5 py-2 hover:opacity-60 duration-200 ease-linear">
+                <div id="profile-nav">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="min-w-8 w-8">
+                        <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <p class="text-lg overflow-hidden text-clip">Profile</p>
+            </a></li>
+            <li><a href="admin.php" class="flex items-center gap-8 pl-5 py-2 hover:opacity-60 duration-200 ease-linear">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor" class="min-w-8 w-8"><path d="M680-80q-83 0-141.5-58.5T480-280q0-83 58.5-141.5T680-480q83 0 141.5 58.5T880-280q0 83-58.5 141.5T680-80Zm-200 0q-139-35-229.5-159.5T160-516v-244l320-120 320 120v227q-26-13-58.5-20t-61.5-7q-116 0-198 82t-82 198q0 62 23.5 112T483-81q-1 0-1.5.5t-1.5.5Zm200-200q25 0 42.5-17.5T740-340q0-25-17.5-42.5T680-400q-25 0-42.5 17.5T620-340q0 25 17.5 42.5T680-280Zm0 120q31 0 57-14.5t42-38.5q-22-13-47-20t-52-7q-27 0-52 7t-47 20q16 24 42 38.5t57 14.5Z"/></svg>
+                <p class="text-lg overflow-hidden text-clip">Admin</p>
+            </a></li>
+        </menu>
+    </header>
+    <!-- MOBILE NAVIGATION-->
+    <nav class="tablet:hidden z-50">
+        <div onclick="toggleNav()" class="fixed right-0 top-50 pl-2.5 rounded-l-full bg-dirty-brown">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#eeeeee" class="p-1.5 size-8.5 cursor-pointer">
+                <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <div onclick="toggleNav()" id="overlay" class="fixed top-0 left-0 w-screen h-screen bg-black/50 hidden"></div>
+        <div id="mob-nav" class="fixed top-0 right-0 pt-20 overflow-clip w-70 h-screen bg-off-white hidden flex-col animate-header font-semibold text-dirty-brown **:select-none">
+            <div onclick="toggleNav()" class="absolute top-5 right-5">
+                <svg class="size-9" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#585345"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </div>
+            <h1 class="px-7.5 text-2xl font-bold">Scholar Finds</h1>
+            <hr class="my-5 w-full opacity-30 *:active:bg-neutral-300">
+            <div class="w-full *:px-7.5 *:py-1 *:flex *:items-center *:gap-2 *:active:bg-neutral-300">
+                <a href="index.html" class="block w-full"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5"> <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z" clip-rule="evenodd" /></svg>Home</a>
+                <a href="about.html" class="block w-full"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5"> <path d="M10 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM1.49 15.326a.78.78 0 0 1-.358-.442 3 3 0 0 1 4.308-3.516 6.484 6.484 0 0 0-1.905 3.959c-.023.222-.014.442.025.654a4.97 4.97 0 0 1-2.07-.655ZM16.44 15.98a4.97 4.97 0 0 0 2.07-.654.78.78 0 0 0 .357-.442 3 3 0 0 0-4.308-3.517 6.484 6.484 0 0 1 1.907 3.96 2.32 2.32 0 0 1-.026.654ZM18 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM5.304 16.19a.844.844 0 0 1-.277-.71 5 5 0 0 1 9.947 0 .843.843 0 0 1-.277.71A6.975 6.975 0 0 1 10 18a6.974 6.974 0 0 1-4.696-1.81Z" /> </svg>About</a>
+                <a href="contact.php" class="block w-full"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5"> <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z" clip-rule="evenodd" /> </svg>Contact</a>
+            </div>
+            <hr class="my-5 w-full opacity-30 *:active:bg-neutral-300">
+            <div class="w-full *:px-7.5 *:py-1 *:flex *:items-center *:gap-2 *:active:bg-neutral-300">
+                <a href="library.php" class="block w-full"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5"> <path d="M10.75 16.82A7.462 7.462 0 0 1 15 15.5c.71 0 1.396.098 2.046.282A.75.75 0 0 0 18 15.06v-11a.75.75 0 0 0-.546-.721A9.006 9.006 0 0 0 15 3a8.963 8.963 0 0 0-4.25 1.065V16.82ZM9.25 4.065A8.963 8.963 0 0 0 5 3c-.85 0-1.673.118-2.454.339A.75.75 0 0 0 2 4.06v11a.75.75 0 0 0 .954.721A7.506 7.506 0 0 1 5 15.5c1.579 0 3.042.487 4.25 1.32V4.065Z" /> </svg>Library</a>
+                <a href="profile.php" class="block w-full"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5"> <path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z" clip-rule="evenodd" /> </svg>Profile</a>
+            </div>
+            <div id="logged-in">
+                <hr class="my-5 w-full opacity-30 *:active:bg-neutral-300">
+                <div class="w-full *:px-7.5 *:py-1 *:flex *:items-center *:gap-2 *:active:bg-neutral-300">
+                    <a onclick="logOut()" class="block w-full text-red-700"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5"> <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h5.5A2.25 2.25 0 0 1 13 4.25v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 0-.75-.75h-5.5a.75.75 0 0 0-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 0 0 .75-.75v-2a.75.75 0 0 1 1.5 0v2A2.25 2.25 0 0 1 10.75 18h-5.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" /> <path fill-rule="evenodd" d="M6 10a.75.75 0 0 1 .75-.75h9.546l-1.048-.943a.75.75 0 1 1 1.004-1.114l2.5 2.25a.75.75 0 0 1 0 1.114l-2.5 2.25a.75.75 0 1 1-1.004-1.114l1.048-.943H6.75A.75.75 0 0 1 6 10Z" clip-rule="evenodd" /> </svg>Logout</a>
+                    <a href="admin.php" class="block w-full"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor" class="size-5"><path d="M680-80q-83 0-141.5-58.5T480-280q0-83 58.5-141.5T680-480q83 0 141.5 58.5T880-280q0 83-58.5 141.5T680-80Zm-200 0q-139-35-229.5-159.5T160-516v-244l320-120 320 120v227q-26-13-58.5-20t-61.5-7q-116 0-198 82t-82 198q0 62 23.5 112T483-81q-1 0-1.5.5t-1.5.5Zm200-200q25 0 42.5-17.5T740-340q0-25-17.5-42.5T680-400q-25 0-42.5 17.5T620-340q0 25 17.5 42.5T680-280Zm0 120q31 0 57-14.5t42-38.5q-22-13-47-20t-52-7q-27 0-52 7t-47 20q16 24 42 38.5t57 14.5Z"/></svg>Admin</a>
+                </div>
+            </div>
+        </div>
+        <!-- SCRIPT -->
+        <script>
+            const mobNav = document.getElementById("mob-nav");
+            const overlay = document.getElementById("overlay");
+    
+            function toggleNav() {
+                mobNav.classList.toggle("hidden");
+                mobNav.classList.toggle("flex");
+                overlay.classList.toggle("hidden");
+            }
+
+            function logOut() {
+                ["id", "personalization", "role", "adminMenu", "filters", "selectedTab", "spotify"].forEach(c => document.cookie = `${c}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
+                window.location.href = "index.html";
+            }
+
+            const admin = document.querySelector('a[href="admin.php"]');
+            const userId = document.cookie.match(/id=([^;]+)/)?.[1];
+            const role = document.cookie.match(/role=([^;]+)/)?.[1];
+            if (!role || role === "regular") {
+                admin?.classList.add("hidden");
+                document.getElementById('logged-in').classList.add("hidden");
+            }
+            const profileNav = document.getElementById("profile-nav");
+            const code = document.cookie.match(/personalization=([^;]+)/)?.[1].slice(0, 2);
+
+            profileNav.innerHTML = code
+                ? `<img src="resources/dp/${code}.svg" alt="" class="min-w-8 w-8 rounded-full border border-off-white">`
+                : `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="min-w-8 w-8">
+                    <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd"/>
+                </svg>`;
+        </script> 
+    </nav>
+    <!-- ================================================== MAIN ================================================== -->
+    <main class="ml-25 m-5 p-15 w-[calc(100vw-135px)] min-h-[calc(100vh-40px)] h-auto rounded-4xl flex flex-col bg-[#eeeeee] text-dirty-brown z-2 drag-none
+        max-tablet:m-0 max-tablet:p-0 max-tablet:size-full max-tablet:rounded-none">
+        <div class="relative w-full h-130 rounded-t-3xl max-tablet:rounded-none bg-[url(resources/umak-pic.jpg)] bg-center flex flex-col items-center justify-center text-white">
+            <div class="absolute w-full h-full rounded-t-3xl max-tablet:rounded-none bg-black/40 z-3"></div>
+            <div class="flex flex-col items-center gap-2.5 z-4 animate-blur-up">
+                <h1 class="font-bold text-center text-5xl max-tablet:text-4xl max-big-phone:text-2xl text-shadow">About the Scholar Finds</h1>
+                <p class="w-3/4 max-big-phone:px-5 max-big-phone:w-full text-center text-xl max-tablet:text-lg max-big-phone:text-sm max-big-phone:leading-4 leading-6 text-shadow">The Scholar Finds brings valuable improvements to the thesis process, benefiting students, faculty, and administrators alike. By promoting efficiency, security, organization, and user-centric design, it empowers academic institutions to manage thesis submissions more effectively while providing a smoother, more productive experience for all users.</p>
+            </div>
+            <div class="mt-2.5 max-big-phone:px-5 flex justify-center flex-wrap gap-2.5 max-big-phone:gap-1 *:px-5 *:py-0.5 *:rounded-md max-tablet:*:text-sm *:flex *:items-center *:gap-1 *:bg-dirty-brown *:text-white *:hover:opacity-85 *:active:scale-95 *:duration-100 *:cursor-pointer select-none z-4 animate-blur-up">
+                <button onclick="window.open('https://docs.google.com/document/d/1-ESeriN8j48558w9R-P0gzeAQOrUJ6i-ELKucw6SzlE/edit?usp=sharing');">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#e8eaed"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
+                    View Research Paper
+                </button>
+                <button onclick="window.open('https://docs.google.com/document/d/1SSDddqpWDD539bILiZi6ozuyIUIxqxMc/edit?usp=sharing&ouid=111718440157713301897&rtpof=true&sd=true');" class="window.open(https://docs.google.com/document/d/1SSDddqpWDD539bILiZi6ozuyIUIxqxMc/edit?usp=sharing&ouid=111718440157713301897&rtpof=true&sd=true)">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#e8eaed"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
+                    View Manual
+                </button>
+            </div>
+            <p class="mt-2 select-none z-4 max-tablet:*:text-sm animate-blur-up">
+                <a href="#abt-college" class="underline underline-offset-2">College</a>
+                <span class="mx-2">•</span>
+                <a href="#abt-devs" class="underline underline-offset-2">Developers</a>
+            </p>
+            <a href="#abt-sf" class="absolute left-1/2 bottom-5 -translate-x-1/2 p-2 rounded-full bg-dirty-brown drop-shadow-2xl animate-bounce z-4 hover:cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487h-80Z"/></svg>
+            </a>
+        </div>
+        <section id="abt-use" class="px-15 max-big-phone:px-5 h-120 max-tablet:h-100 max-big-phone:h-140 flex max-big-phone:flex-col max-big-phone:justify-center items-center gap-15 max-tablet:gap-10 bg-zinc-300">
+            <div>
+                <iframe class="w-120 h-75 max-tablet:w-80 max-tablet:h-50 rounded-2xl drop-shadow-xl select-none" src="https://drive.google.com/file/d/1e8FS_tYJRt6zQ_tMnRYs777x_tTM87kN/preview" allow="autoplay" ></iframe>
+            </div>
+            <div class="flex flex-col max-big-phone:items-center">
+                <h2 class="max-big-phone:mb-1 text-3xl max-tablet:text-2xl max-big-phone:leading-6 max-big-phone:text-center font-bold leading-8">A Quick Start with Scholar Finds</h2>
+                <p class="text-xl max-tablet:text-base leading-6 max-tablet:leading-5 text-justify">
+                    Get started with Scholar Finds in this brief video guide! Learn to search, save resources, create citations, and organize research efficiently. Perfect for students and researchers looking to streamline their academic work.
+                </p>
+                <div class="my-2">
+                    <button onclick="window.open('https://docs.google.com/document/d/1SSDddqpWDD539bILiZi6ozuyIUIxqxMc/edit?usp=sharing&ouid=111718440157713301897&rtpof=true&sd=true')" class="px-5 py-0.5 rounded-md bg-dirty-brown flex items-center gap-2 max-tablet:text-sm text-off-white select-none cursor-pointer hover:opacity-80 active:scale-95 duration-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#e8eaed"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
+                        View Full Manual    
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section id="abt-sf" class="mt-10 h-100 max-big-phone:h-200 grid grid-cols-2 max-big-phone:flex max-big-phone:flex-col *:flex-col *:items-center">
+            <div class="flex">
+                <svg class="mt-20 size-20 max-tablet:size-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><!-- Icon from BoxIcons by Atisa - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="m21.948 11.684l-2-6A1 1 0 0 0 19 5h-3v2h2.279l1.334 4H15c-1.103 0-2 .897-2 2h-2c0-1.103-.897-2-2-2H4.387l1.334-4H8V5H5a1 1 0 0 0-.948.684l-2 6l.012.004A.9.9 0 0 0 2 12v4c0 1.654 1.346 3 3 3h3c1.654 0 3-1.346 3-3v-1h2v1c0 1.654 1.346 3 3 3h3c1.654 0 3-1.346 3-3v-4a1 1 0 0 0-.063-.313zM9 16c0 .551-.448 1-1 1H5c-.552 0-1-.449-1-1v-3h5zm11 0c0 .551-.448 1-1 1h-3c-.552 0-1-.449-1-1v-3h5z"/></svg>
+                <h2 class="text-2xl font-extrabold">OUR VISION</h2>
+                <br>
+                <p class="w-100 max-tablet:w-80 text-justify text-xl max-tablet:text-base max-tablet:leading-5 leading-6">Scholar Finds envisions to provide a centralized platform that offers quick and easy access to a vast collection of theses and abstracts, striving to make research more accessible and less burdensome for the CCIS students.</p>
+            </div>
+            <div class="flex">
+                <svg class="mt-20 size-20 max-tablet:size-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><!-- Icon from BoxIcons by Atisa - https://creativecommons.org/licenses/by/4.0/ --><path d="M14.303 6l-3-2H6V2H4v20h2v-8h4.697l3 2H20V6z" fill="currentColor"/></svg>
+                <h2 class="text-2xl font-extrabold">OUR MISSION</h2>
+                <br>
+                <p class="w-100 max-tablet:w-80 text-justify text-xl max-tablet:text-base max-tablet:leading-5 leading-6">To optimize the thesis management and enhance the research experience of  the CCIS students at the University of Makati by providing a centralized digital platform that will make finding theses and abstracts effortless, allowing students to save time and effort.</p>
+            </div>
+        </section>
+        <section id="abt-college" class="relative h-130 max-tablet:h-100 max-big-phone:h-150 flex max-big-phone:flex-col max-big-phone:justify-center items-center gap-10 max-tablet:gap-5">
+            <div class="absolute top-1/2 -left-15 -translate-y-1/2 w-[calc(100%+120px)] max-tablet:w-[calc(100%+60px)] h-75 max-tablet:h-65 max-big-phone:h-full bg-lgreen"></div>
+            <img src="resources/ccis.svg" alt="ccis" class="pl-5 w-100 max-tablet:w-60 z-2 drop-shadow-xl select-none">
+            <div class="pr-5 max-big-phone:px-5 flex flex-col max-big-phone:items-center z-2">
+                <h2 class="mb-1 max-big-phone:text-center text-2xl max-tablet:text-xl leading-6 font-bold">College of Computing and Information Sciences</h2>
+                <p class="text-justify text-xl max-tablet:text-base max-tablet:leading-5 leading-6">The College provides access to new trends and ideas in information systems/technology to keep pace with the innovations and meet the demands of a fast-changing business and technology environment. It aims to develop globally competitive IT graduates who are God-fearing and morally upright from among the marginalized population of the City of Makati.</p>
+                <div class="mt-3">
+                    <button class="px-5 py-0.5 rounded-md flex items-center gap-1 bg-dirty-brown text-white max-tablet:text-sm hover:opacity-85 active:scale-95 duration-100 cursor-pointer select-none" onclick="window.open('https://www.umak.edu.ph/academics/college/ccis/')">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#e8eaed"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
+                        Visit in UMak Website
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section id="abt-ccis" class="mb-30 max-tablet:mb-20 h-100 max-big-phone:h-150 grid grid-cols-2 max-big-phone:flex max-big-phone:flex-col *:flex *:flex-col *:items-center">
+            <div>
+                <svg class="mt-20 size-20 max-tablet:size-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><!-- Icon from BoxIcons by Atisa - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="m21.948 11.684l-2-6A1 1 0 0 0 19 5h-3v2h2.279l1.334 4H15c-1.103 0-2 .897-2 2h-2c0-1.103-.897-2-2-2H4.387l1.334-4H8V5H5a1 1 0 0 0-.948.684l-2 6l.012.004A.9.9 0 0 0 2 12v4c0 1.654 1.346 3 3 3h3c1.654 0 3-1.346 3-3v-1h2v1c0 1.654 1.346 3 3 3h3c1.654 0 3-1.346 3-3v-4a1 1 0 0 0-.063-.313zM9 16c0 .551-.448 1-1 1H5c-.552 0-1-.449-1-1v-3h5zm11 0c0 .551-.448 1-1 1h-3c-.552 0-1-.449-1-1v-3h5z"/></svg>
+                <h2 class="text-2xl font-extrabold">COLLEGE'S VISION</h2>
+                <br>
+                <p class="w-100 max-tablet:w-80 text-justify text-xl max-tablet:text-base max-tablet:leading-5 leading-6">The college envisions leading in the development of excellent professionals and champions of social equity in the global field of computing and information sciences.</p>
+            </div>
+            <div>
+                <svg class="mt-20 size-20 max-tablet:size-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><!-- Icon from BoxIcons by Atisa - https://creativecommons.org/licenses/by/4.0/ --><path d="M14.303 6l-3-2H6V2H4v20h2v-8h4.697l3 2H20V6z" fill="currentColor"/></svg>
+                <h2 class="text-2xl font-extrabold">COLLEGE'S MISSION</h2>
+                <br>
+                <p class="w-100 max-tablet:w-80 text-justify text-xl max-tablet:text-base max-tablet:leading-5 leading-6">Guided by its vision, the college produces practitioners and leaders in computing and information sciences who are resilient, industry-ready, and socially responsible through innovative curriculum design and dynamic delivery systems.</p>
+            </div>
+        </section>
+        <section id="abt-al" class="relative py-15 min-h-180 max-tablet:min-h-160 flex flex-col justify-center">
+            <div class="absolute top-0 -left-15 h-full w-[calc(100%+120px)] max-tablet:w-[calc(100%+60px)] bg-lgreen"></div>
+            <h1 class="my-5 text-3xl font-bold text-center z-2">Academic Leadership</h1>
+            <div class="flex gap-10 max-tablet:gap-5 justify-center flex-wrap">                               
+                <!-- ============================ COLLEGE DEAN ============================ -->
+                <label for="dean" class="group relative size-50 min-w-50 max-tablet:size-40 max-tablet:min-w-40 rounded-2xl bg-[url(resources/dp/backdrop.svg)] bg-cover shadow-xl text-white cursor-help">
+                    <input type="checkbox" id="dean" class="peer" hidden>
+                    <label for="dean" class="fixed top-0 left-0 size-full hidden peer-checked:block z-5"></label>
+                    <img src="resources/dp/dean.svg" alt="dean" class="absolute left-1/2 bottom-0 -translate-x-1/2 size-full rounded-2xl drop-shadow-lg duration-500 select-none group-hover:-translate-y-4">
+                    <div class="absolute bottom-0 w-full h-1/2 rounded-b-2xl bg-linear-to-b from-transparent to-off-white/50 select-none">
+                        <div class="px-2 pb-1 size-full flex items-end">
+                            <h2 class="font-bold text-shadow">College Dean</h2>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-1/2 -right-105 max-tablet:left-0 max-tablet:-bottom-80 tablet:translate-y-1/2 p-5 w-100 h-75 max-tablet:w-80 rounded-2xl border-2 border-zinc-800 bg-ash/70 backdrop-blur-sm z-5 cursor-auto animate-fadeIn hidden peer-checked:block">
+                        <div class="size-full text-left leading-5 overflow-y-scroll *:cursor-text select-text flex flex-col gap-4 font-light">
+                            <span>
+                                <h2 class="font-semibold text-xl max-tablet:text-lg leading-none">Professor Joel B. Mangaba, DT</h2>
+                                <i>College Dean</i>
+                            </span>
+                            <hr>
+                            <div class="pr-3 size-full text-left max-tablet:text-sm max-tablet:leading-4 leading-5 overflow-y-scroll *:cursor-text select-text flex flex-col gap-4 font-light">
+                                <p><span class="font-semibold">Professor Joel Mangaba</span> is the Dean of the College of Computing and Information Sciences at the University of Makati, Philippines. He has been in the academe since 2001 and has handled various administrative and professorial positions from different Higher Education Institutions from undergraduate to graduate programs. His certifications and training focused on Software Development, Network Security, Database, Cybersecurity, Cybercrime, Robotic Process Automation, Data Analytics, Datamining, Machine Learning, Cloud, and Programming.</p>
+                                <p>Prof. Mangaba is currently the Vice President of the Council of Deans for IT Education – National Capital Region, he’s also the Director of Professional Development of Multimedia Arts Association of the Philippines, the Director for Academic Affairs of Cybersecurity of the Philippines, an Accreditor member of Regional Quality Assessment Team (RQAT) of the ICT Programs of the Commission on Higher Education – National Capital Region, and an IT Consultant of Erovoutika Robotics and Automation International.</p>
+                                <p>As a researcher, Prof. Mangaba has presented and published numerous research papers locally and abroad with the Scopus index and has been a member of the Editorial Board of various Journal publishers like International Journal in Information Technology in Governance, Education, and Business, International Journal of Computing Sciences Research, and International Journal of Advanced Science and Convergence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+                <!-- ============================ COLLEGE SECRETARY ============================ -->
+                <label for="secretary" class="group relative size-50 min-w-50 max-tablet:size-40 max-tablet:min-w-40 rounded-2xl bg-[url(resources/dp/backdrop.svg)] bg-cover shadow-xl text-white cursor-help">
+                    <input type="checkbox" id="secretary" class="peer" hidden>
+                    <label for="secretary" class="fixed top-0 left-0 size-full hidden peer-checked:block z-5"></label>
+                    <img src="resources/dp/secretary.svg" alt="secretary" class="absolute left-1/2 bottom-0 -translate-x-1/2 size-full rounded-2xl drop-shadow-lg duration-500 select-none group-hover:-translate-y-4">
+                    <div class="absolute bottom-0 w-full h-1/2 rounded-b-2xl bg-linear-to-b from-transparent to-off-white/50 select-none">
+                        <div class="px-2 pb-1 size-full flex items-end">
+                            <h2 class="font-bold text-shadow">College Secretary</h2>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-1/2 -right-105 max-tablet:right-0 max-tablet:-bottom-80 tablet:translate-y-1/2 p-5 w-100 h-75 max-tablet:w-80 rounded-2xl border-2 border-zinc-800 bg-ash/70 backdrop-blur-sm z-5 cursor-auto animate-fadeIn hidden peer-checked:block">
+                        <div class="size-full text-left leading-5 overflow-y-scroll *:cursor-text select-text flex flex-col gap-4 font-light">
+                            <span>
+                                <h2 class="font-semibold text-xl max-tablet:text-lg leading-none">Associate Professor Janice Pola D. Congzon, MIT</h2>
+                                <i>College Secretary</i>
+                            </span>
+                            <hr>
+                            <div class="pr-3 size-full text-left max-tablet:text-sm max-tablet:leading-4 leading-5 overflow-y-scroll *:cursor-text select-text flex flex-col gap-4 font-light">
+                                <p><span class="font-semibold">Associate Professor Janice Pola D. Congzon</span> holds a Master’s degree in Information Technology from the Technological University of the Philippines Manila, equipping her with a strong foundation in IT principles and practices. She is the College Secretary of the College of Computing and Information Sciences at the University of Makati and an accomplished educator and administrative leader with general experience in information technology and academic administration.</p>
+                                <p>With over a decade of teaching experience, Assoc. Prof. Congzon has expertly guided students in key areas such as computer programming, database management, and research methodologies. From 2017 up to the present, she played a pivotal role in supporting various academic programs, demonstrating exceptional leadership, organization, and a deep commitment to institutional success. Her efforts in this capacity have significantly contributed to the smooth functioning of academic and administrative operations.</p>
+                                <p>Assoc. Prof. Congzon’s expertise is further recognized through her Professional Civil Service Eligibility and IT certifications, underscoring her technical competence and commitment to continuous professional development. Beyond her formal responsibilities, she is an active contributor to the university, serving as a committee member in various university-wide initiatives, coordinating college budgeting and procurement, facilitating linkages and networking, and volunteering in community outreach programs. Her dedication to service and excellence was acknowledged when she received the Pinaka Masipag na Kawani Award (2014) and was nominated for the Pinaka may Malasakit at Kusa na Kawani Award (2015) by UMak.</p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+                <!-- ============================ CHAIR DIPLOMA ============================ -->
+                <label for="chairdip" class="group relative size-50 min-w-50 max-tablet:size-40 max-tablet:min-w-40 rounded-2xl bg-[url(resources/dp/backdrop.svg)] bg-cover shadow-xl text-white cursor-help">
+                    <input type="checkbox" id="chairdip" class="peer" hidden>
+                    <label for="chairdip" class="fixed top-0 left-0 size-full hidden peer-checked:block z-5"></label>
+                    <img src="resources/dp/chair-dip.svg" alt="chairdip" class="absolute left-1/2 bottom-0 -translate-x-1/2 size-full rounded-2xl drop-shadow-lg duration-500 select-none group-hover:-translate-y-4">
+                    <div class="absolute bottom-0 w-full h-1/2 rounded-b-2xl bg-linear-to-b from-transparent to-off-white/50 select-none">
+                        <div class="px-2 pb-1 size-full flex items-end">
+                            <h2 class="font-bold text-shadow">Chair, Diploma</h2>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-1/2 -right-105 max-tablet:left-0 max-tablet:-bottom-80 tablet:translate-y-1/2 p-5 w-100 h-75 max-tablet:w-80 rounded-2xl border-2 border-zinc-800 bg-ash/70 backdrop-blur-sm z-5 cursor-auto animate-fadeIn hidden peer-checked:block">
+                        <div class="size-full text-left leading-5 overflow-y-scroll *:cursor-text select-text flex flex-col gap-4 font-light">
+                            <span>
+                                <h2 class="font-semibold text-xl max-tablet:text-lg leading-none">Associate Professor Wilber B. Sabado, MM</h2>
+                                <i>Chair, Diploma and Service Programs</i>
+                            </span>
+                            <hr>
+                            <div class="pr-3 size-full text-left max-tablet:text-sm max-tablet:leading-4 leading-5 overflow-y-scroll *:cursor-text select-text flex flex-col gap-4 font-light">
+                                <p><span class="font-semibold">Associate Professor Wilber Sabado</span> is a graduate of Computer Engineering Technology and Bachelor of Engineering at the Technological University of the Philippines Taguig and presently finishing his dissertation for the degree PhD in Technology Management at the Technological University of the Philippines Manila. He is the Department Chair of the College of Computing and Information Sciences.</p>
+                                <p>He has obtained several certifications like Apple Certified Teacher, Google Certified Educator 1 & 2, and Microsoft Certified Professional. He is also a TOEIC and TEFL English Proficiency passer. He is also a COMPTIA-certified IT Fundamentals passer, TESDA NCII holder of Computer Systems Servicing, and a TESDA-certified trainer. Additionally, he passed the Facilitate eLearning Sessions of TESDA and also passed the Trainer Skills Assessment of Google.</p>
+                                <p>Assoc. Prof. Wilber Sabado has also presented and published research papers locally and internationally. Moreover, he is the conference chairman of the recently concluded 10th ICT Research Congress: International Edition of UMak where he is the current College Research Coordinator.</p>
+                                <p>Assoc. Prof. Wilber Sabado has conducted several seminars for the Department of Information and Communication Technology, Department of Education, Philippine Institute of Certified Public Accountants, Erovoutika, and several Higher Education Institutions. His webinar in DICT entitled Blended Learning is considered the most viewed video up until now. As a consistent Outstanding Faculty member, Assoc. Prof. Wilber Sabado has received the Most Outstanding IT Educator Award for three consecutive years.</p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+                <!-- ============================ CHAIR CS ============================ -->
+                <label for="chaircs" class="group relative size-50 min-w-50 max-tablet:size-40 max-tablet:min-w-40 rounded-2xl bg-[url(resources/dp/backdrop.svg)] bg-cover shadow-xl text-white cursor-help">
+                    <input type="checkbox" id="chaircs" class="peer" hidden>
+                    <label for="chaircs" class="fixed top-0 left-0 size-full hidden peer-checked:block z-5"></label>
+                    <img src="resources/dp/chair-cs.svg" alt="chaircs" class="absolute left-1/2 bottom-0 -translate-x-1/2 size-full rounded-2xl drop-shadow-lg duration-500 select-none group-hover:-translate-y-4">
+                    <div class="absolute bottom-0 w-full h-1/2 rounded-b-2xl bg-linear-to-b from-transparent to-off-white/50 select-none">
+                        <div class="px-2 pb-1 size-full flex items-end">
+                            <h2 class="font-bold text-shadow">Chair, CS and IS</h2>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-1/2 -right-105 max-tablet:right-0 max-tablet:-bottom-80 tablet:translate-y-1/2 p-5 w-100 h-75 max-tablet:w-80 rounded-2xl border-2 border-zinc-800 bg-ash/70 backdrop-blur-sm z-5 cursor-auto animate-fadeIn hidden peer-checked:block">
+                        <div class="size-full text-left leading-5 overflow-y-scroll *:cursor-text select-text flex flex-col gap-4 font-light">
+                            <span>
+                                <h2 class="font-semibold text-xl max-tablet:text-lg leading-none">Assistant Professor Ali A. Naim, MIS</h2>
+                                <i>Chair, Computer Science and Information Systems & IT Education</i>
+                            </span>
+                            <hr>
+                            <div class="pr-3 size-full text-left max-tablet:text-sm max-tablet:leading-4 leading-5 overflow-y-scroll *:cursor-text select-text flex flex-col gap-4 font-light">
+                                <p><span class="font-semibold">Assistant Professor Ali Naim</span> is a dedicated educator and seasoned professional with a Master’s degree in Information Systems. He has taught a variety of Computer Science and Information Systems courses, including web development, database design, management information systems, and research methodologies. His engaging and enlightening teaching style empowers students to confidently navigate the complexities of information technology.</p>
+                                <p>Prior to his current position, he has made significant contributions to the academic landscape as a part-time faculty member at several universities in Metro Manila. His experience in teaching a variety of computer science and information systems courses has allowed him to share his knowledge and inspire students to pursue careers in technology.</p>
+                                <p>He is an active member of several computer organizations both locally and internationally, a testament to his passion for sharing his knowledge and advancing the field of computer science. His involvement in these organizations allows him to stay at the forefront of technological advancements and collaborate with other professionals in the industry.</p>
+                                <p>Asst. Prof. Naim has honed his skills through rigorous training and practical experience, earning a professional certification in his field. His commitment to excellence, dedication to student success, and active involvement in the computer science community make him a valuable asset to UMak and the broader field of information technology.</p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+                <!-- ============================ CHAIR IT ============================ -->
+                <label for="chairit" class="group relative size-50 min-w-50 max-tablet:size-40 max-tablet:min-w-40 rounded-2xl bg-[url(resources/dp/backdrop.svg)] bg-cover shadow-xl text-white cursor-help">
+                    <input type="checkbox" id="chairit" class="peer" hidden>
+                    <label for="chairit" class="fixed top-0 left-0 size-full hidden peer-checked:block z-5"></label>
+                    <img src="resources/dp/chair-it.svg" alt="chairit" class="absolute left-1/2 bottom-0 -translate-x-1/2 size-full rounded-2xl drop-shadow-lg duration-500 select-none group-hover:-translate-y-4">
+                    <div class="absolute bottom-0 w-full h-1/2 rounded-b-2xl bg-linear-to-b from-transparent to-off-white/50 select-none">
+                        <div class="px-2 pb-1 size-full flex items-end">
+                            <h2 class="font-bold text-shadow">Chair, IT</h2>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-1/2 -right-105 max-tablet:right-0 max-big-phone:left-1/2 max-big-phone:-translate-x-1/2 max-tablet:-bottom-80 tablet:translate-y-1/2 p-5 w-100 h-75 max-tablet:w-80 rounded-2xl border-2 border-zinc-800 bg-ash/70 backdrop-blur-sm z-5 cursor-auto animate-fadeIn hidden peer-checked:block">
+                        <div class="size-full text-left leading-5 overflow-y-scroll *:cursor-text select-text flex flex-col gap-4 font-light">
+                            <span>
+                                <h2 class="font-semibold text-xl max-tablet:text-lg leading-none">Assistant Professor Edgardo T. Cruz, MIT</h2>
+                                <i>Chair, Information Technology Program</i>
+                            </span>
+                            <hr>
+                            <div class="pr-3 size-full text-left max-tablet:text-sm max-tablet:leading-4 leading-5 overflow-y-scroll *:cursor-text select-text flex flex-col gap-4 font-light">
+                                <p><span class="font-semibold">Assistant Professor Edgardo Cruz</span>, took up his Master in Information Technology at the Technological University of the Philippines, where is presently taking up his Doctor of Technology. He also holds a Bachelor of Science in Computer Engineering.</p>
+                                <p>He serves as the IT Program Director of the IT Programs of the College of Computing and Information Sciences at the University of Makati.</p>
+                                <p>As an industry practitioner, Engr. Cruz works as an IT consultant at the Philippine Public Safety College (National Police College), Emmanuel Innovations, and Brillhunt IT Solutions. He also worked as a Chief Technology Officer, System Administrator, and IC Design Engineer.</p>
+                                <p>He currently holds the position of Executive Vice-President and NCR President of the Cybersecurity Society of the Philippines and is also a member of the Information Security Officers Group. He is a Certified Ethical Hacker – a qualification given by the EC-Council and obtained by demonstrating knowledge of assessing the security of computer systems, a certified Information Technology Specialist in Network Security, a certified Incident Response Trainor (CIRT), a certified Network Security Specialist, and a Microsoft Technology Specialists (MTA) in Networking, Server Administration. Operating Systems, and Security Fundamentals.</p>
+                                <p>A highly motivated and detail-oriented cybersecurity professional with a strong foundation in information and network security, digital forensics, pen-testing, and security awareness training.</p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <br>
+            <h1 class="my-5 text-3xl font-bold text-center z-2">Academic Support Group</h1>
+            <div class="flex gap-10 max-tablet:gap-5 justify-center flex-wrap">
+                <!-- ============================ ACADEMIC SUPPORT ============================ -->
+                <div class="group relative size-50 min-w-50 max-tablet:size-40 max-tablet:min-w-40 rounded-2xl bg-[url(resources/dp/backdrop.svg)] bg-cover shadow-xl text-white ">
+                    <img src="resources/ccis.svg" alt="sup1" class="absolute left-1/2 bottom-2 max-tablet:bottom-0 -translate-x-1/2 size-45 rounded-2xl drop-shadow-lg duration-500 select-none group-hover:-translate-y-4">
+                    <div class="absolute bottom-0 w-full h-1/2 rounded-b-2xl bg-linear-to-b from-transparent to-off-white/50 select-none">
+                        <div class="px-2 pb-1 size-full flex items-end">
+                            <h2 class="font-bold text-shadow">Ms. Joe Allen Balbero</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative size-50 min-w-50 max-tablet:size-40 max-tablet:min-w-40 rounded-2xl bg-[url(resources/dp/backdrop.svg)] bg-cover shadow-xl text-white">
+                    <img src="resources/ccis.svg" alt="sup1" class="absolute left-1/2 bottom-2 max-tablet:bottom-0 -translate-x-1/2 size-45 rounded-2xl drop-shadow-lg duration-500 select-none group-hover:-translate-y-4">
+                    <div class="absolute bottom-0 w-full h-1/2 rounded-b-2xl bg-linear-to-b from-transparent to-off-white/50 select-none">
+                        <div class="px-2 pb-1 size-full flex items-end">
+                            <h2 class="font-bold text-shadow">Ms. Reyna Batal</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative size-50 min-w-50 max-tablet:size-40 max-tablet:min-w-40 rounded-2xl bg-[url(resources/dp/backdrop.svg)] bg-cover shadow-xl text-white">
+                    <img src="resources/ccis.svg" alt="sup1" class="absolute left-1/2 bottom-2 max-tablet:bottom-0 -translate-x-1/2 size-45 rounded-2xl drop-shadow-lg duration-500 select-none group-hover:-translate-y-4">
+                    <div class="absolute bottom-0 w-full h-1/2 rounded-b-2xl bg-linear-to-b from-transparent to-off-white/50 select-none">
+                        <div class="px-2 pb-1 size-full flex items-end">
+                            <h2 class="font-bold text-shadow">Ms. Rachele M. Maglaya</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="abt-devs" class="py-30 px-6 bg">
+            <div class="max-w-7xl mx-auto">
+              <h1 class="text-4xl max-tablet:text-3xl font-extrabold text-center text-stone-700 mb-16 tracking-wide">
+                Scholar Finds' Developer Team
+              </h1>
+          
+              <div class="flex items-center justify-center gap-7.5 flex-wrap *:w-72.5 *:h-100 *:flex *:flex-col *:items-center *:justify-between">
+          
+                <div class="group bg-white p-8 rounded-3xl shadow-md text-center transition-all duration-500 ease-in-out hover:scale-110 hover:bg-stone-500 hover:shadow-2xl hover:ring-4 hover:ring-stone-700 h-full">
+                  <div class="*:leading-none">
+                    <img src="resources/dp/dev-renz.png" alt="Renzjan" class="w-36 h-36 mx-auto rounded-full mb-6 border-4 border-stone-700 shadow group-hover:ring-4 group-hover:ring-neutral-100 transition">
+                    <h2 class=" font-bold text-gray-800 group-hover:text-white transition">Renzjan S. Moncinilla</h2>
+                    <p class="text-gray-500 italic mb-3 group-hover:text-gray-100 transition">Fullstack Lead Developer</p>
+                    <p class="leading-6! text-gray-700 group-hover:text-white transition">Creative and code-savvy, he leads the fullstack development with efficiency and innovation.</p>
+                  </div>
+                </div>
+          
+                <div class="group bg-white p-8 rounded-3xl shadow-md text-center transition-all duration-500 ease-in-out hover:scale-110 hover:bg-stone-500 hover:shadow-2xl hover:ring-4 hover:ring-stone-700 h-full">
+                  <div class="*:leading-none">
+                    <img src="resources/dp/dev-dhanica.png" alt="Dhanica" class="w-36 h-36 mx-auto rounded-full mb-6 border-4 border-stone-700 shadow group-hover:ring-4 group-hover:ring-neutral-100 transition">
+                    <h2 class="font-bold text-gray-800 group-hover:text-white transition">Ma. Dhanica S. Ballesteros</h2>
+                    <p class="text-gray-500 italic mb-3 group-hover:text-gray-100 transition">UI/UX Designer</p>
+                    <p class="leading-6! text-gray-700 group-hover:text-white transition">Designs intuitive user experiences that look great and feel natural to users.</p>
+                  </div>
+                </div>
+          
+                <div class="group bg-white p-8 rounded-3xl shadow-md text-center transition-all duration-500 ease-in-out hover:scale-110 hover:bg-stone-500 hover:shadow-2xl hover:ring-4 hover:ring-stone-700 h-full">
+                  <div class="*:leading-none">
+                    <img src="resources/dp/dev-xia.png" alt="Lixianaze" class="w-36 h-36 mx-auto rounded-full mb-6 border-4 border-stone-700 shadow group-hover:ring-4 group-hover:ring-neutral-100 transition">
+                    <h2 class="font-bold text-gray-800 group-hover:text-white transition">Lixianaze C. Garcia</h2>
+                    <p class="text-gray-500 italic mb-3 group-hover:text-gray-100 transition">Data Analyst</p>
+                    <p class="leading-6! text-gray-700 group-hover:text-white transition">Turns raw data into actionable insights to guide development decisions.</p>
+                  </div>
+                </div>
+          
+                <div class="group bg-white p-8 rounded-3xl shadow-md text-center transition-all duration-500 ease-in-out hover:scale-110 hover:bg-stone-500 hover:shadow-2xl hover:ring-4 hover:ring-stone-700 h-full">
+                  <div class="*:leading-none">
+                    <img src="resources/dp/dev-andrei.png" alt="Paul" class="w-36 h-36 mx-auto rounded-full mb-6 border-4 border-stone-700 shadow group-hover:ring-4 group-hover:ring-neutral-100 transition">
+                    <h2 class="font-bold text-gray-800 group-hover:text-white transition">Paul Andrei D. Valencia</h2>
+                    <p class="text-gray-500 italic mb-3 group-hover:text-gray-100 transition">Researcher</p>
+                    <p class="leading-6! text-gray-700 group-hover:text-white transition">Explores trends and contributes deep insights to support development goals.</p>
+                  </div>
+                </div>
+          
+              </div>
+            </div>
+        </section>
+        <section id="abt-docu" class="py-24 px-6 text-center relative overflow-hidden">
+            <div class="mb-16 animate-fade-in">
+            <h2 class="text-4xl max-tablet:text-3xl font-extrabold mb-5 text-stone-700 tracking-wide">Developer Team's Journey</h2>
+            <p class="text-lg max-tablet:text-base leading-relaxed">
+                From the <b>College of Innovative Teacher Education-Higher School ng UMak (CITE-HSU)</b>, the Group 3 of G12-03 CPG, from the Academic Year 2024–2025, developed <b>Scholar Finds</b> as part of their requirements for <b>Computer Programming 4, Work Immersion, and Research Project</b>. This platform is designed to simplify the research process and enhance convenience for students and researchers in their respective fields.
+            </p>
+        </div>
+        <div class="mx-auto relative">
+            <div class="flex items-center justify-center flex-wrap gap-5 *:w-90 max-tablet:*:w-70 max-big-phone:*:w-full *:rounded-xl *:shadow-lg select-none">
+                <img src="resources/images/docu1.jpg" alt="">
+                <img src="resources/images/docu2.jpg" alt="">
+                <img src="resources/images/docu3.jpg" alt="">
+                <img src="resources/images/docu4.jpg" alt="">
+                <img src="resources/images/docu5.jpg" alt="">
+        </div>
+        </section>
+        <footer class="relative tablet:my-5 py-10 h-auto text-off-white font-extralight">
+            <div class="absolute z-1 bottom-0 -left-15 max-tablet:left-0 w-[calc(100%+120px)] max-tablet:w-full h-full bg-zinc-800"></div>
+            <div class="relative z-2 max-tablet:px-10">
+                <h1 class="mb-2 text-2xl font-semibold">References</h1>
+                <div class="*:pl-9 *:-indent-9 max-big-phone:text-xs max-phone:break-words">
+                    <p>
+                        University of Makati. (2025, March 10). <em>College of Computing and Information Sciences - University of Makati.</em> https://www.umak.edu.ph/academics/college/ccis/
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script>
+        location.hash && history.replaceState(null, '', location.pathname);
+    </script>
+</body>
+</html>
