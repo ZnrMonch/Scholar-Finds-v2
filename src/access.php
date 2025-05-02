@@ -6,6 +6,7 @@ if (isset($_COOKIE['id'])) {
 
 session_start();
 $activeForm = $_SESSION['activeForm'] ?? 'loginform';
+$regis = $_SESSION['regisCredentials'] ?? [];
 
 function activeForm($form, $activeForm) {
     return $form === $activeForm ? "flex" : "hidden";
@@ -93,22 +94,22 @@ function activeForm($form, $activeForm) {
                 <div class="flex flex-col gap-3">
                     <span>
                         <label for="rname" class="pl-2 text-neutral-400 select-none">Name</label>
-                        <input type="text" name="rname" id="rname" class="w-full px-2.5 py-1 rounded-lg bg-neutral-800 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] caret-neutral-500 outline-none" required>
+                        <input type="text" name="rname" id="rname" class="w-full px-2.5 py-1 rounded-lg bg-neutral-800 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] caret-neutral-500 outline-none" required <?php echo isset($regis['name']) ? 'value="' . htmlspecialchars($regis['name']) . '"' : '';?>>
                     </span>
                     <span>
                         <label for="rusername" class="pl-2 text-neutral-400 select-none">Username</label>
-                        <input type="text" name="rusername" id="rusername" class="w-full px-2.5 py-1 rounded-lg bg-neutral-800 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] caret-neutral-500 outline-none" required>
+                        <input type="text" name="rusername" id="rusername" class="w-full px-2.5 py-1 rounded-lg bg-neutral-800 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] caret-neutral-500 outline-none" required <?php echo isset($regis['username']) ? 'value="' . htmlspecialchars($regis['username']) . '"' : '';?>>
                     </span>
                     <span>
                         <label for="remail" class="pl-2 text-neutral-400 select-none">Email Address</label>
-                        <input type="email" name="remail" id="remail" class="w-full px-2.5 py-1 rounded-lg bg-neutral-800 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] caret-neutral-500 outline-none" required>
+                        <input type="email" name="remail" id="remail" class="w-full px-2.5 py-1 rounded-lg bg-neutral-800 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] caret-neutral-500 outline-none" required <?php echo isset($regis['email']) ? 'value="' . htmlspecialchars($regis['email']) . '"' : '';?>>
                     </span>
                     <span>
                         <p class="pl-2 text-neutral-400 select-none">Membership</p>
                         <span class="w-full flex gap-2.5 text-center text-sm *:outline-none select-none *:cursor-pointer">
-                            <input type="radio" name="membership" value="student" id="student" class="peer/student" checked hidden>
-                            <input type="radio" name="membership" value="alumni" id="alumni" class="peer/alumni" hidden>
-                            <input type="radio" name="membership" value="guest" id="guest" class="peer/guest" hidden>
+                            <input type="radio" name="membership" value="student" id="student" class="peer/student" required hidden <?php echo isset($regis['membership']) ? ($regis['membership'] === 'student' ? 'checked' : '') : 'checked';?>>
+                            <input type="radio" name="membership" value="alumni" id="alumni" class="peer/alumni" required hidden <?php echo isset($regis['membership']) && $regis['membership'] === 'alumni' ? 'checked' : '';?>>
+                            <input type="radio" name="membership" value="guest" id="guest" class="peer/guest" required hidden <?php echo isset($regis['membership']) && $regis['membership'] === 'guest' ? 'checked' : '';?>>
                             <label for="student" class="flex-1 px-2.5 py-2 rounded-lg bg-neutral-800 peer-checked/student:bg-green-900 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] text-neutral-400 peer-checked/student:text-off-white duration-200">Student</label>
                             <label for="alumni" class="flex-1 px-2.5 py-2 rounded-lg bg-neutral-800 peer-checked/alumni:bg-green-900 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] text-neutral-400 peer-checked/alumni:text-off-white duration-200">Alumni</label>
                             <label for="guest" class="flex-1 px-2.5 py-2 rounded-lg bg-neutral-800 peer-checked/guest:bg-green-900 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] text-neutral-400 peer-checked/guest:text-off-white duration-200">Guest</label>
@@ -118,7 +119,7 @@ function activeForm($form, $activeForm) {
                         <label for="rpassword" class="pl-2 text-neutral-400 select-none">Password</label>
                         <span class="relative flex gap-1">
                             <span class="flex-1 relative">
-                                <input type="password" name="rpassword" id="rpassword" class="w-full px-2.5 py-1 rounded-lg bg-neutral-800 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] caret-neutral-500 outline-none" required>
+                                <input type="password" name="rpassword" id="rpassword" class="w-full px-2.5 py-1 rounded-lg bg-neutral-800 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] caret-neutral-500 outline-none" required <?php echo isset($regis['password']) ? 'value="' . htmlspecialchars($regis['password']) . '"' : '';?>>
                                 <button onclick="togglePw('r')" type="button" class="absolute top-1/2 -translate-y-1/2 right-2.5 text-neutral-400 hover:text-neutral-200 duration-200 cursor-pointer">
                                     <!-- OPEN --> <svg id="ropen" class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE --><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M12 5c3.679 0 8.162 2.417 9.73 5.901c.146.328.27.71.27 1.099c0 .388-.123.771-.27 1.099C20.161 16.583 15.678 19 12 19s-8.162-2.417-9.73-5.901C2.124 12.77 2 12.389 2 12c0-.388.123-.771.27-1.099C3.839 7.417 8.322 5 12 5m0 3a4 4 0 1 0 0 8a4 4 0 0 0 0-8m0 2a2 2 0 1 1 0 4a2 2 0 0 1 0-4"/></g></svg>
                                     <!-- CLOSE  --> <svg id="rclose" class="size-6 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><!-- Icon from MingCute Icon by MingCute Design - https://github.com/Richard9394/MingCute/blob/main/LICENSE --><g fill="none"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M3.05 9.31a1 1 0 1 1 1.914-.577c2.086 6.986 11.982 6.987 14.07.004a1 1 0 1 1 1.918.57a9.5 9.5 0 0 1-1.813 3.417L20.414 14A1 1 0 0 1 19 15.414l-1.311-1.311a9.1 9.1 0 0 1-2.32 1.269l.357 1.335a1 1 0 1 1-1.931.518l-.364-1.357c-.947.14-1.915.14-2.862 0l-.364 1.357a1 1 0 1 1-1.931-.518l.357-1.335a9.1 9.1 0 0 1-2.32-1.27l-1.31 1.312A1 1 0 0 1 3.585 14l1.275-1.275c-.784-.936-1.41-2.074-1.812-3.414Z"/></g></svg>

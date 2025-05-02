@@ -253,8 +253,8 @@ if (isset($_POST['cemail'])) {
                 <div class="big-phone:flex-1 h-full max-big-phone:h-max">
                     <form method="post" id="contact-form" class="p-2.5 size-full max-big-phone:h-max flex flex-col gap-2.5 font-semibold">
                         <span class="flex max-big-phone:flex-col gap-2.5">
-                            <input type="email" name="cemail" id="cemail" class="px-3 py-2 w-full bg-stone-200/50 border border-stone-300 rounded-md outline-none placeholder:text-dirty-brown shadow-sm flex-2 max-tablet:text-sm" placeholder="Email Address" required>
-                            <select name="concern" id="concern" class="px-3 py-2 w-full bg-stone-200/50 border border-stone-300 rounded-md outline-none placeholder:text-dirty-brown shadow-sm flex-1 max-tablet:text-sm" required>
+                            <input type="email" name="cemail" id="cemail" class="px-3 py-2 w-full bg-stone-200/50 border border-stone-300 rounded-md outline-none placeholder:text-dirty-brown shadow-sm flex-2 max-tablet:text-sm focus:border-dgreen" placeholder="Email Address" required>
+                            <select name="concern" id="concern" class="px-3 py-2 w-full bg-stone-200/50 border border-stone-300 rounded-md outline-none placeholder:text-dirty-brown shadow-sm flex-1 max-tablet:text-sm focus:border-dgreen" required>
                                 <option value="none" selected disabled>Your concern</option>
                                 <option value="removal">Request for Thesis Removal</option>
                                 <option value="assistance">Technical Asssitance</option>
@@ -262,10 +262,10 @@ if (isset($_POST['cemail'])) {
                             </select>
                         </span>
                         <span>
-                            <input type="text" name="subject" id="subject" class="px-3 py-2 w-full bg-stone-200/50 border border-stone-300 rounded-md outline-none placeholder:text-dirty-brown shadow-sm max-tablet:text-sm" placeholder="Subject" required>
+                            <input type="text" name="subject" id="subject" class="px-3 py-2 w-full bg-stone-200/50 border border-stone-300 rounded-md outline-none placeholder:text-dirty-brown shadow-sm max-tablet:text-sm focus:border-dgreen" placeholder="Subject" required>
                         </span>
                         <span>
-                            <textarea name="message" id="message" class="px-3 py-2 w-full h-40 bg-stone-200/50 border border-stone-300 rounded-md outline-none placeholder:text-dirty-brown shadow-sm resize-none max-tablet:text-sm" placeholder="Tell us about your concern..." required></textarea>
+                            <textarea name="message" id="message" class="px-3 py-2 w-full h-40 bg-stone-200/50 border border-stone-300 rounded-md outline-none placeholder:text-dirty-brown shadow-sm resize-none max-tablet:text-sm focus:border-dgreen" placeholder="Tell us about your concern..." required></textarea>
                         </span>
                         <button data-sitekey="6Ld5yh8rAAAAAP8xFH5zqZW27LnLRwmvBL4zD4WL" data-callback="onSubmit" class="g-recaptcha px-5 py-1 rounded-md bg-dgreen text-off-white drop-shadow-md select-none cursor-pointer hover:opacity-85 active:brightness-125 duration-100">Send</button>
                     </form>

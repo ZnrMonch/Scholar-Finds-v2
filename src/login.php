@@ -52,11 +52,18 @@ if (isset($_POST['login'])) {
 
 // ================================================================================================================================ REGISTER FORM
 if (isset($_POST['register'])) {
-    $username = trim($_POST['rusername']);
     $name = trim($_POST['rname']);
+    $username = trim($_POST['rusername']);
     $email = trim($_POST['remail']);
     $password = encrypt(trim($_POST['rpassword']));
     $membership = trim($_POST['membership']);
+    $regisCredentials = array(
+        "name" => $name,
+        "username" => $username,
+        "email" => $email,
+        "membership" => $membership,
+        "password" => decrypt($password)
+    );
 
     if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
         $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='. "6LdD-hkrAAAAAD-Y3PZCSNd318vaIRHUQt3uPxdQ" .'&response='.$_POST['g-recaptcha-response']);
@@ -137,6 +144,7 @@ if (isset($_POST['register'])) {
         $_SESSION['reg-error'] = 'Error! Please check the reCAPTCHA checkbox.'; 
     }
     
+    $_SESSION['regisCredentials'] = $regisCredentials;
     $_SESSION['activeForm'] = 'regisform';
     header("Location: access.php");
     exit();

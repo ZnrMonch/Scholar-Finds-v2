@@ -76,7 +76,7 @@ function activeForm($form, $activeForm) {
                     </span>
                     <span class="pt-5 flex flex-col items-center gap-2 **:select-none">
                         <div class="g-recaptcha scale-70" data-sitekey="6LdD-xkrAAAAADgm3R_8kC6eniIEzBhKsUe_Te22" data-theme="dark"></div>
-                        <button type="submit" id="fpw-submit" name="fpw" class="w-full px-2.5 py-1 rounded-lg bg-green-900 disabled:bg-neutral-700 enabled:border-1 border-green-950 shadow-[0_2px_10px_rgb(0,0,0,0.5)] outline-none enabled:hover:bg-green-800 transition-all duration-200 cursor-pointer disabled:cursor-not-allowed" disabled>Reset</button>
+                        <button type="submit" id="fpw-submit" name="fpw" class="w-full px-2.5 py-1 rounded-lg bg-green-900 disabled:bg-neutral-700 enabled:border-1 border-green-950 shadow-[0_2px_10px_rgb(0,0,0,0.5)] outline-none enabled:hover:bg-green-800 transition-all duration-200 cursor-pointer disabled:cursor-not-allowed" disabled>Reset Password</button>
                         <p class="text-neutral-600 font-semibold text-sm"><a href="access.php" class="text-green-700 hover:text-green-600 duration-200 font-semibold cursor-pointer">Login</a> | <a id="gotoregis" class="text-green-700 hover:text-green-600 duration-200 font-semibold cursor-pointer">Register</a></p>             
                     </span>
                 </div>

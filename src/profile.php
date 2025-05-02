@@ -16,6 +16,7 @@
         $user = $result->fetch_assoc();
 
         $userId = $user['user_id'];
+        $dateJoined = $user['date_joined'];
         $membership = $user['membership'];
         $username = $user['username'];
         $name = $user['name'];
@@ -178,290 +179,66 @@
 
         session_unset();
     ?>
-    <main class="ml-25 m-5 p-15 w-[calc(100vw-135px)] min-h-[calc(100vh-40px)] h-auto rounded-4xl flex flex-col bg-[#eeeeee] z-2 text-dirty-brown drag-none
+    <main class="ml-25 m-5 p-15 w-[calc(100vw-135px)] min-h-[calc(100vh-40px)] h-auto rounded-4xl flex gap-10 bg-[#eeeeee] z-2 text-dirty-brown drag-none
     max-tablet:m-0 max-tablet:p-5 max-tablet:min-h-screen max-tablet:size-full max-tablet:rounded-none">
-        <div id="overlay-customize-profile" onclick="toggleFlex('customize-profile')" class="fixed top-0 left-0 z-2 size-full bg-black/40 hidden"></div>
-        <div id="overlay-edit-intro" onclick="toggleEditIntro()" class="fixed z-2 top-0 left-0 size-full bg-black/40 hidden"></div>
-        <div class="relative w-full h-70 max-big-phone:h-50 rounded-2xl <?php echo $bg; ?>">
-            <button onclick="toggleFlex('customize-profile')" class="absolute top-4 right-5 hover:brightness-125 cursor-pointer"><svg class="size-5 max-big-phone:size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M10 15q-.425 0-.712-.288T9 14v-2.425q0-.4.15-.763t.425-.637l8.6-8.6q.3-.3.675-.45t.75-.15q.4 0 .763.15t.662.45L22.425 3q.275.3.425.663T23 4.4t-.137.738t-.438.662l-8.6 8.6q-.275.275-.637.438t-.763.162zm9.6-9.2l1.425-1.4l-1.4-1.4L18.2 4.4zM5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h6.5q.35 0 .575.175t.35.45t.087.55t-.287.525l-4.65 4.65q-.275.275-.425.638T7 10.75V15q0 .825.588 1.412T9 17h4.225q.4 0 .763-.15t.637-.425L19.3 11.75q.25-.25.525-.288t.55.088t.45.35t.175.575V19q0 .825-.587 1.413T19 21z"/></svg></button>     
-        </div>
-        <form action="customize.php" method="post" id="customize-profile" class="fixed z-3 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-10 w-120 rounded-xl hidden flex-col gap-5 drop-shadow-lg bg-off-white text-dirty-brown **:outline-none">
-            <div class="relative">
-                <button onclick="toggleFlex('customize-profile')" type="button" class="absolute -top-2.5 -right-2.5 cursor-pointer hover:opacity-80 active:scale-95 duration-200"><svg class="size-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button>
-                <h2 class="py-5 font-bold text-2xl text-center">Customize Profile</h2>
+        <div class="w-75 h-full flex flex-col gap-5 *:p-4 *:rounded-xl *:bg-white *:border *:border-neutral-200 *:shadow-md *:flex *:gap-2.5">
+            <div class="items-center">
+                <img src="resources/dp/01.svg" alt="" class="size-10 rounded-full border border-neutral-400 shadow-md select-none">
+                <span class="font-semibold leading-none">
+                    <a class="cursor-pointer active:cursor-text flex items-center font-bold"><?php echo $name?><svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></a>
+                    <p class="text-xs opacity-50">@<?php echo strtolower($username);?></p>
+                </span>
             </div>
-            <div class="flex flex-col gap-1">
-                <h2 class="font-semibold select-none">Background Cover:</h2>
-                <div class="h-15 flex gap-1 *:flex-1 *:h-full *:rounded-md font-semibold text-sm select-none **:cursor-pointer">
-                    <input type="radio" name="bg" id="golden-blush" value="golden-blush" class="peer/gb" checked hidden>
-                    <input type="radio" name="bg" id="pink-panther" value="pink-panther" class="peer/pp" hidden>
-                    <input type="radio" name="bg" id="dusty-grass" value="dusty-grass" class="peer/dg" hidden>
-                    <input type="radio" name="bg" id="snowy-mint" value="snowy-mint" class="peer/sm" hidden>
-                    <div class="bg-golden-blush group opacity-40 peer-checked/gb:opacity-100">
-                        <label for="golden-blush" class="size-full items-center justify-center hidden group-hover:flex">Golden Blush</label>
-                    </div>
-                    <div class="bg-pink-panther group opacity-40 peer-checked/pp:opacity-100">
-                        <label for="pink-panther" class="size-full items-center justify-center hidden group-hover:flex">Pink Panther</label>
-                    </div>
-                    <div class="bg-dusty-grass group opacity-40 peer-checked/dg:opacity-100">
-                        <label for="dusty-grass" class="size-full items-center justify-center hidden group-hover:flex">Dusty Grass</label>
-                    </div>
-                    <div class="bg-snowy-mint group opacity-40 peer-checked/sm:opacity-100">
-                        <label for="snowy-mint" class="size-full items-center justify-center hidden group-hover:flex">Snowy Mint</label>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full h-35">
-                <h2 class="font-semibold select-none">Profile Picture:</h2>
-                <div class="size-full grid grid-cols-5 items-center justify-center ">
-                    <input type="radio" name="dp" id="dp1" value="01" class="peer/dp1" checked hidden>
-                    <input type="radio" name="dp" id="dp2" value="02" class="peer/dp2" hidden>
-                    <input type="radio" name="dp" id="dp3" value="03" class="peer/dp3" hidden>
-                    <input type="radio" name="dp" id="dp4" value="04" class="peer/dp4" hidden>
-                    <input type="radio" name="dp" id="dp5" value="05" class="peer/dp5" hidden>
-                    <input type="radio" name="dp" id="dp6" value="06" class="peer/dp6" hidden>
-                    <input type="radio" name="dp" id="dp7" value="07" class="peer/dp7" hidden>
-                    <input type="radio" name="dp" id="dp8" value="08" class="peer/dp8" hidden>
-                    <input type="radio" name="dp" id="dp9" value="09" class="peer/dp9" hidden>
-                    <input type="radio" name="dp" id="dp10" value="10" class="peer/dp10" hidden>
-                    <div class="peer-checked/dp1:opacity-100 opacity-40">
-                        <label for="dp1" class="size-15"><img src="resources/dp/01.svg" alt="" class="size-15 rounded-full border-2 border-dirty-brown cursor-pointer"></label>
-                    </div>
-                    <div class="peer-checked/dp2:opacity-100 opacity-40">
-                        <label for="dp2" class="size-15"><img src="resources/dp/02.svg" alt="" class="size-15 rounded-full border-2 border-dirty-brown cursor-pointer"></label>
-                    </div>
-                    <div class="peer-checked/dp3:opacity-100 opacity-40">
-                        <label for="dp3" class="size-15"><img src="resources/dp/03.svg" alt="" class="size-15 rounded-full border-2 border-dirty-brown cursor-pointer"></label>
-                    </div>
-                    <div class="peer-checked/dp4:opacity-100 opacity-40">
-                        <label for="dp4" class="size-15"><img src="resources/dp/04.svg" alt="" class="size-15 rounded-full border-2 border-dirty-brown cursor-pointer"></label>
-                    </div>
-                    <div class="peer-checked/dp5:opacity-100 opacity-40">
-                        <label for="dp5" class="size-15"><img src="resources/dp/05.svg" alt="" class="size-15 rounded-full border-2 border-dirty-brown cursor-pointer"></label>
-                    </div>
-                    <!-- lower -->
-                    <div class="peer-checked/dp6:opacity-100 opacity-40">
-                        <label for="dp6" class="size-15"><img src="resources/dp/06.svg" alt="" class="size-15 rounded-full border-2 border-dirty-brown cursor-pointer"></label>
-                    </div>
-                    <div class="peer-checked/dp7:opacity-100 opacity-40">
-                        <label for="dp7" class="size-15"><img src="resources/dp/07.svg" alt="" class="size-15 rounded-full border-2 border-dirty-brown cursor-pointer"></label>
-                    </div>
-                    <div class="peer-checked/dp8:opacity-100 opacity-40">
-                        <label for="dp8" class="size-15"><img src="resources/dp/08.svg" alt="" class="size-15 rounded-full border-2 border-dirty-brown cursor-pointer"></label>
-                    </div>
-                    <div class="peer-checked/dp9:opacity-100 opacity-40">
-                        <label for="dp9" class="size-15"><img src="resources/dp/09.svg" alt="" class="size-15 rounded-full border-2 border-dirty-brown cursor-pointer"></label>
-                    </div>
-                    <div class="peer-checked/dp10:opacity-100 opacity-40">
-                        <label for="dp10" class="size-15"><img src="resources/dp/10.svg" alt="" class="size-15 rounded-full border-2 border-dirty-brown cursor-pointer"></label>
-                    </div>
-                </div>
-            </div>
-            <div class="my-5 flex justify-center">
-                <input type="text" name="userid" id="userid" value="<?php echo $userId;?>" hidden>
-                <button type="submit" name="save-cp" class="px-5 py-1 w-30 rounded-md bg-lgreen font-bold hover:opacity-80 duration-100 cursor-pointer">Save</button>
-            </div>
-        </form>
-        <div class="flex-1 relative w-full flex flex-col gap-5 max-big-phone:gap-10">
-            <div class="group absolute -top-25 max-big-phone:-top-20 left-10 max-big-phone:left-1/2 max-big-phone:-translate-x-1/2 size-50 max-big-phone:size-40 rounded-full border-6 border-off-white overflow-clip">
-                <img src="resources/dp/<?php echo $dp;?>.svg" alt="" class="relative z-1 select-none">
-            </div>
-            <div class="pl-70 pr-0 py-3 max-big-phone:p-0 max-big-phone:pt-37.5 w-full h-25 flex justify-between">
-                <div class="h-full flex flex-col max-big-phone:items-center justify-end gap-1 **:leading-none">
-                    <h1 class="font-bold text-2xl max-big-phone:text-xl"><?php echo $name;?> <i class="text-lg">(<?php echo '@' . strtolower($username);?>)</i></h1>
-                    <h2 class="opacity-80 flex items-center gap-2 max-big-phone:text-sm"><?php echo ucfirst($membership);?><span>•</span><span><?php echo $college == 'hsu' ? 'Higher School ng UMak' : ($college == 'ccis' ? 'College of Computing and Information Sciences' : ''); ?></span></h2>
-                    <i class="opacity-80 text-sm max-big-phone:text-xs">Joined in <span class="font-bold">January 2023</span></i>
+            <div class="px-0! gap-0! flex-col font-bold *:px-5 *:py-3 *:flex *:items-center *:gap-2.5 *:hover:bg-off-white select-none *:cursor-pointer *:duration-200">
+                <div>
+                    <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M480-440q58 0 99-41t41-99q0-58-41-99t-99-41q-58 0-99 41t-41 99q0 58 41 99t99 41ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-46q-54-53-125.5-83.5T480-360q-83 0-154.5 30.5T200-246v46Z"/></svg>
+                    <span>Account Information</span>
                 </div>
                 <div>
-                    <button onclick="logOut()" class="px-5 py-0.5 rounded-md bg-red-900 text-off-white text-sm select-none cursor-pointer hover:opacity-80 active:scale-95 duration-200">
-                        Sign out
-                    </button>
+                    <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="m80-520 200-360 200 360H80Zm200 400q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm240 0v-320h320v320H520Zm160-400q-57-48-95.5-81T523-659q-23-25-33-47t-10-47q0-45 31.5-76t78.5-31q27 0 50.5 12.5T680-813q16-22 39.5-34.5T770-860q47 0 78.5 31t31.5 76q0 25-10 47t-33 47q-23 25-61.5 58T680-520Z"/></svg>
+                    <span>Preferences</span>
+                </div>
+                <div>
+                    <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M280-280h80v-280h-80v280Zm160 0h80v-400h-80v400Zm160 0h80v-160h-80v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z"/></svg>
+                    <span>Statistics</span>
                 </div>
             </div>
-            <div class="flex-1 w-full flex max-big-phone:flex-col gap-5">
-                <div class="relative p-5 w-100 max-tablet:w-70 max-big-phone:w-full rounded-xl bg-zinc-200 border border-zinc-300 flex flex-col gap-5 **:leading-none">
-                    <button onclick="toggleEditIntro()" class="absolute top-5 right-5 hover:brightness-125 cursor-pointer"><svg class="size-5 max-big-phone:size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M10 15q-.425 0-.712-.288T9 14v-2.425q0-.4.15-.763t.425-.637l8.6-8.6q.3-.3.675-.45t.75-.15q.4 0 .763.15t.662.45L22.425 3q.275.3.425.663T23 4.4t-.137.738t-.438.662l-8.6 8.6q-.275.275-.637.438t-.763.162zm9.6-9.2l1.425-1.4l-1.4-1.4L18.2 4.4zM5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h6.5q.35 0 .575.175t.35.45t.087.55t-.287.525l-4.65 4.65q-.275.275-.425.638T7 10.75V15q0 .825.588 1.412T9 17h4.225q.4 0 .763-.15t.637-.425L19.3 11.75q.25-.25.525-.288t.55.088t.45.35t.175.575V19q0 .825-.587 1.413T19 21z"/></svg></button>
-                    <h2 class="font-bold text-xl max-big-phone:text-lg select-none">Introduction</h2>
-                    <p class="text-justify max-big-phone:text-sm">
-                        <?php echo $bio ?>
-                    </p>
-                    <div id="profile-info" class="flex big-phone:flex-col gap-5 max-big-phone:text-sm">
-                        <p class="max-big-phone:flex-1 flex flex-col gap-1">
-                            <b class="select-none whitespace-nowrap">Year and Section:</b>
-                            <span><?php echo !empty($yearsection) ? implode(' - ', $yearsection) : ''?></span>
-                        </p>
-                        <p class="flex flex-col gap-1">
-                            <b class="select-none whitespace-nowrap">Email Address:</b>
-                            <span class="break-all"><?php echo $email ?></span>
-                        </p>
-                    </div>
-                    <div id="edit-intro" class="fixed z-3 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-10 w-120 rounded-xl hidden flex-col justify-evenly gap-5 drop-shadow-lg bg-off-white text-dirty-brown **:outline-none">
-                        <div class="relative">
-                            <button onclick="toggleEditIntro()" type="button" class="absolute -top-2.5 -right-2.5 cursor-pointer hover:opacity-80 active:scale-95 duration-200"><svg class="size-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button>
-                            <h2 class="py-5 font-bold text-2xl text-center">Edit Introduction</h2>
-                        </div>    
-                        <form action="update.php" method="post" class="flex flex-col gap-5 *:relative">
-                            <span>
-                                <input type="text" name="name" id="name" required class="peer px-2 py-1.5 w-full rounded-md border-2 border-dirty-brown text-sm">
-                                <label for="name" class="absolute top-2.5 left-2 px-1 bg-slgreen leading-none select-none opacity-70 peer-valid:-translate-y-4 peer-valid:text-xs peer-valid:opacity-100 peer-focus:-translate-y-4 peer-focus:text-xs peer-focus:opacity-100 duration-200">Name</label>
-                            </span>
-                            <span class="flex *:flex-1 *:flex *:items-center *:justify-center *:gap-1">
-                                <span>
-                                    <input type="radio" name="college" value="ccis" id="CCIS" onchange="toggleInputs('ccis-input'); toggleInputs('hsu-input');" class="peer" checked>
-                                    <label for="CCIS" class="font-semibold select-none opacity-50 peer-checked:opacity-100">CCIS</label>
-                                </span>
-                                <span>
-                                    <input type="radio" name="college" value="hsu" id="HSU" onchange="toggleInputs('ccis-input'); toggleInputs('hsu-input');" class="peer">
-                                    <label for="HSU" class="font-semibold select-none opacity-50 peer-checked:opacity-100">HSU</label>
-                                </span>
-                            </span>
-                            <script>
-                                const toggleInputs = (id) => {
-                                    document.getElementById(id).classList.toggle('flex');
-                                    document.getElementById(id).classList.toggle('hidden');
-                                };
-                            </script>
-                            <!-- COLLEGE STUDENT -->
-                            <div id="ccis-input" class="flex gap-2.5 *:relative">
-                                <span class="flex-1">
-                                    <label for="year" class="absolute top-2.5 left-2 px-1 bg-slgreen leading-none select-none opacity-100 -translate-y-4 text-xs">Year</label>
-                                    <select name="year" id="year" class="px-2 py-1.5 w-full rounded-md border-2 border-dirty-brown text-sm">
-                                        <option value="I">I</option>
-                                        <option value="II">II</option>
-                                        <option value="III">III</option>
-                                        <option value="IV">IV</option>
-                                    </select>  
-                                </span>
-                                <span class="flex-3">
-                                    <input type="text" name="section" id="section" required class="peer px-2 py-1.5 w-full rounded-md border-2 border-dirty-brown text-sm">
-                                    <label for="section" class="absolute top-2.5 left-2 px-1 bg-slgreen leading-none select-none opacity-70 peer-valid:-translate-y-4 peer-valid:text-xs peer-valid:opacity-100 peer-focus:-translate-y-4 peer-focus:text-xs peer-focus:opacity-100 duration-200">Section</label>
-                                </span>
-                            </div>
-                            <!-- SENIOR HIGH STUDENT -->
-                            <div id="hsu-input" class="hidden gap-2.5 *:relative">
-                                <span class="flex-1">
-                                    <label for="shs-grade" class="absolute top-2.5 left-2 px-1 bg-slgreen leading-none select-none opacity-100 -translate-y-4 text-xs">Year</label>
-                                    <select name="shs-grade" id="shs-grade" class="px-2 py-1.5 w-full rounded-md border-2 border-dirty-brown text-sm">
-                                        <option value="G11">Grade 11</option>
-                                        <option value="G12">Grade 12</option>
-                                    </select>  
-                                </span>
-                                <span class="flex-3">
-                                    <input type="text" name="shs-section" id="shs-section" required class="peer px-2 py-1.5 w-full rounded-md border-2 border-dirty-brown text-sm">
-                                    <label for="shs-section" class="absolute top-2.5 left-2 px-1 bg-slgreen leading-none select-none opacity-70 peer-valid:-translate-y-4 peer-valid:text-xs peer-valid:opacity-100 peer-focus:-translate-y-4 peer-focus:text-xs peer-focus:opacity-100 duration-200">Section</label>
-                                </span>
-                            </div>
-                            <span>
-                                <textarea type="text" name="bio" id="bio" maxlength="200" required class="peer px-2 py-1.5 w-full h-20 rounded-md border-2 border-dirty-brown text-sm resize-none"></textarea>
-                                <label for="bio" class="absolute top-2.5 left-2 px-1 bg-slgreen leading-none select-none opacity-70 peer-valid:-translate-y-4 peer-valid:text-xs peer-valid:opacity-100 peer-focus:-translate-y-4 peer-focus:text-xs peer-focus:opacity-100 duration-200">Bio</label>
-                                <i class="text-sm select-none">*maximum of 200 characters</i>
-                            </span>
-                            <div class="flex justify-center">
-                                <input type="text" name="id" id="id" value="<?php echo $_COOKIE['id'];?>" hidden>
-                                <button type="submit" name="update" class="px-5 py-1 w-30 rounded-md bg-lgreen font-bold hover:opacity-80 duration-200 cursor-pointer">Save</button>
-                            </div>
-                        </form>
-                    </div>
-                    <script>
-                        const toggleCollege = () => {
-                            const ccis = document.getElementById('CCIS').checked;
-                            ['ccis-input', 'year', 'section'].forEach(id => {
-                                const el = document.getElementById(id);
-                                el.classList?.toggle('hidden', !ccis);
-                                el.disabled = !ccis;
-                            });
-                            ['hsu-input', 'shs-grade', 'shs-section'].forEach(id => {
-                                const el = document.getElementById(id);
-                                el.classList?.toggle('hidden', ccis);
-                                el.disabled = ccis;
-                            });
-                        };
-
-                        const toggleEditIntro = () => {
-                            const overlay = document.getElementById('overlay-edit-intro');
-                            const panel = document.getElementById('edit-intro');
-                            overlay.classList.toggle('hidden');
-                            panel.classList.toggle('hidden');
-                            panel.classList.toggle('flex');
-
-                            document.getElementById('name').value = "<?php echo $name; ?>";
-                            document.getElementById('bio').value = "<?php echo $bio; ?>";
-
-                            const college = "<?php echo $college ?>";
-                            document.getElementById(college).checked = true;
-
-                            if (college === 'CCIS') {
-                                document.getElementById('year').value = "<?php echo $year; ?>";
-                                document.getElementById('section').value = "<?php echo $section; ?>";
-                            } else {
-                                document.getElementById('shs-grade').value = "<?php echo $year; ?>";
-                                document.getElementById('shs-section').value = "<?php echo $section; ?>";
-                            }
-
-                            toggleCollege();
-                        };
-
-                        document.addEventListener('DOMContentLoaded', () => {
-                            ['CCIS', 'HSU'].forEach(id =>
-                                document.getElementById(id).addEventListener('change', toggleCollege)
-                            );
-                        });
-                    </script>
-
+            <div class="px-0! gap-0! flex-col font-bold *:px-5 *:py-3 *:flex *:items-center *:gap-2.5 *:hover:bg-off-white select-none *:cursor-pointer *:duration-200">
+                <div>
+                    <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v52q-18-6-37.5-9t-42.5-3q-116 0-198 82t-82 198q0 45 13 84t37 76H240Zm480 40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Zm360 400q25 0 42.5-17.5T780-300q0-25-17.5-42.5T720-360q-25 0-42.5 17.5T660-300q0 25 17.5 42.5T720-240Zm0 120q30 0 56-14t43-39q-23-14-48-20.5t-51-6.5q-26 0-51 6.5T621-173q17 25 43 39t56 14Z"/></svg>
+                    <span>Security</span>
                 </div>
-                <div class="relative flex-1 mt-5 flex flex-col gap-2.5 **:leading-none">
-                    <div class="flex items-center justify-between select-none">
-                        <h2 class="text-xl max-big-phone:text-lg font-bold">Bookmarks</h2>
-                        <a href="library.php" class="text-sm font-bold">Show More</a>
-                    </div>
-                    <div class="flex-1 relative">
-                        <div class="absolute z-1 bottom-0 w-full h-1/2 max-tablet:h-3/4 bg-linear-to-b from-transparent to-off-white"></div>
-                        <div class="relative z-1 flex flex-col gap-2 *:h-20 max-tablet:*:h-27 max-big-phone:*:h-20">
-                        <?php
-                            $allBookmarks = array_slice(explode('-', $bookmarks), 0, 4);
-                            $placeholders = implode(',', array_fill(0, count($allBookmarks), '?'));
-
-                            $stmt = $conn->prepare("SELECT * FROM theses WHERE thesis_id IN ($placeholders)");
-                            $stmt->bind_param(str_repeat('s', count($allBookmarks)), ...$allBookmarks);
-                            $stmt->execute();
-                            $result = $stmt->get_result();
-
-                            $theses = $result->fetch_all(MYSQLI_ASSOC);
-                            
-                            foreach ($theses as $thesis):
-                                $textColor = $thesis['course'] === "BSCS-AD" ? "text-violet-950" : ($thesis['course'] === "BSIT-NS" ? "text-sky-950" : "text-yellow-950"); ?>
-                                <div class="relative w-full px-5 p-2.5 h-25 max-big-phone:h-27.5 rounded-xl bg-neutral-100 border border-neutral-300 hover:border-dirty-brown/70 flex gap-2.5">
-                                    <div class="flex-1 flex flex-col items-start justify-center select-text">
-                                        <h3 class="font-bold text-base leading-4 max-big-phone:text-sm max-big-phone:leading-3 <?= $textColor ?>">
-                                            <?= htmlspecialchars($thesis['title']) ?>
-                                            <?php if (trim($thesis['course']) !== "BSCS-AD" && trim($thesis['course']) !== "BSIT-NS"): ?>
-                                                <i class="max-big-phone:mb-0.5 px-2 rounded-full bg-yellow-800/80 text-xs text-off-white select-none">
-                                                    <?= htmlspecialchars($thesis['course']) ?>
-                                                </i>
-                                            <?php endif; ?>
-                                        </h3>
-                                        <i class="leading-none text-sm max-big-phone:text-xs">
-                                            <?php
-                                                $authors = explode("-", $thesis['authors']);
-                                                echo htmlspecialchars(implode(", ", $authors));
-                                            ?>
-                                        </i>
-                                    </div>
-                                </div>
-                        <?php endforeach; ?>
-                    </div>
+                <div>
+                    <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="m640-120-12-60q-12-5-22.5-10.5T584-204l-58 18-40-68 46-40q-2-14-2-26t2-26l-46-40 40-68 58 18q11-8 21.5-13.5T628-460l12-60h80l12 60q12 5 22.5 11t21.5 15l58-20 40 70-46 40q2 12 2 25t-2 25l46 40-40 68-58-18q-11 8-21.5 13.5T732-180l-12 60h-80ZM80-160v-112q0-33 17-62t47-44q51-26 115-44t141-18h14q6 0 12 2-29 72-24 143t48 135H80Zm600-80q33 0 56.5-23.5T760-320q0-33-23.5-56.5T680-400q-33 0-56.5 23.5T600-320q0 33 23.5 56.5T680-240ZM400-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Z"/></svg>
+                    <span>Account Control</span>
                 </div>
             </div>
         </div>
-        <script>
-            function toggleFlex(targetElement) {
-                let element = document.getElementById(targetElement);
-                let overlay = document.getElementById('overlay-' + targetElement);
-                overlay.classList.toggle('hidden');
-                element.classList.toggle('hidden');
-                element.classList.toggle('flex');
-            }
-        </script>
+        <div class="flex-1 relative flex flex-col">
+            <div class="bg-snowy-mint w-full h-80 rounded-xl shadow-md"></div>
+            <div class="absolute top-55 left-15">
+                <div class="relative size-50 rounded-full border-7 border-off-white overflow-clip">
+                    <img src="resources/dp/01.svg" alt="" class="rounded-full absolute z-1 size-50 peer">
+                    <div class="absolute z-2 size-full bg-black/60 hidden peer-hover:flex hover:flex items-center justify-center gap-1 cursor-pointer text-off-white">
+                        <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M120-120v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm584-528 56-56-56-56-56 56 56 56Z"/></svg>
+                        <p class="font-bold select-none">Edit Profile Picture</p>
+                    </div>
+                </div>
+            </div>
+            <div class="m-2.5 ml-75 h-20 flex flex-col justify-center font-bold leading-none">
+                <h1 class="text-2xl"><?php echo $name?></h1>
+                <i class="opacity-40">@<?php echo strtolower($username);?></i>
+            </div>
+            <div class="flex-1 pt-5 text-justify">
+                <span>
+                    <h2 class="font-bold text-xl">About Me</h2>
+                    <p class="opacity-80">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue.</p>
+                </span>
+                <span>
+                    
+                </span>
+            </div>
+        </div>
     </main>
 </body>
 </html>
