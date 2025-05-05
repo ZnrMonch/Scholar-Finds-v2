@@ -487,6 +487,86 @@
             "date": "April 24, 2025",
             "details": "Archived 4 Accounts.",
             "initiator": "renzjan.moncinilla@umak.edu.ph"
+        },
+        {
+            "reference_id": "VIW#000034",
+            "type": "thesis",
+            "operation": "visited",
+            "date": "May 4, 2025",
+            "details": "Viewed the details of Thesis [ID#171]",
+            "initiator": "renzjan.moncinilla@umak.edu.ph"
+        },
+        {
+            "reference_id": "VIW#000035",
+            "type": "thesis",
+            "operation": "visited",
+            "date": "May 4, 2025",
+            "details": "Viewed the details of Thesis [ID#164]",
+            "initiator": "renzjan.moncinilla@umak.edu.ph"
+        },
+        {
+            "reference_id": "VIW#000036",
+            "type": "thesis",
+            "operation": "visited",
+            "date": "May 5, 2025",
+            "details": "Viewed the details of Thesis [ID#198]",
+            "initiator": "renzjan.moncinilla@umak.edu.ph"
+        },
+        {
+            "reference_id": "VIW#000037",
+            "type": "thesis",
+            "operation": "visited",
+            "date": "May 5, 2025",
+            "details": "Viewed the details of Thesis [ID#162]",
+            "initiator": "renzjan.moncinilla@umak.edu.ph"
+        },
+        {
+            "reference_id": "VIW#000038",
+            "type": "thesis",
+            "operation": "visited",
+            "date": "May 5, 2025",
+            "details": "Viewed the details of Thesis [ID#207]",
+            "initiator": "renzjan.moncinilla@umak.edu.ph"
+        },
+        {
+            "reference_id": "VIW#000039",
+            "type": "thesis",
+            "operation": "visited",
+            "date": "May 5, 2025",
+            "details": "Viewed the details of Thesis [ID#199]",
+            "initiator": "renzjan.moncinilla@umak.edu.ph"
+        },
+        {
+            "reference_id": "ACT#000026",
+            "type": "account",
+            "operation": "logged",
+            "date": "May 5, 2025",
+            "details": "User [ID#0001] logged in.",
+            "initiator": "renzjan.moncinilla@umak.edu.ph"
+        },
+        {
+            "reference_id": "ACT#000027",
+            "type": "account",
+            "operation": "logged",
+            "date": "May 6, 2025",
+            "details": "User [ID#0001] logged in.",
+            "initiator": "renzjan.moncinilla@umak.edu.ph"
+        },
+        {
+            "reference_id": "ACT#000028",
+            "type": "account",
+            "operation": "added",
+            "date": "May 6, 2025",
+            "details": "Created a new user with an ID of [ID#0000].",
+            "initiator": "Mikejames@gmail.com"
+        },
+        {
+            "reference_id": "VIW#000040",
+            "type": "thesis",
+            "operation": "visited",
+            "date": "May 6, 2025",
+            "details": "Viewed the details of Thesis [ID#163]",
+            "initiator": "Mikejames@gmail.com"
         }
     ]
 }

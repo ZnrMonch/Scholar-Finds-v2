@@ -1,11 +1,4 @@
 <?php
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'dependency/PHPMailer/src/Exception.php';
-require 'dependency/PHPMailer/src/PHPMailer.php';
-require 'dependency/PHPMailer/src/SMTP.php';
 require_once 'config.php';
 session_start();
 
@@ -34,6 +27,29 @@ if (isset($_POST['login'])) {
             $stmt->execute();
             $result = $stmt->get_result();
             $userId = $result->fetch_assoc()['user_id'] ?? null;
+            $stmt->close();
+
+            $lastRefId = '';
+            $stmt = $conn->prepare("SELECT reference_id FROM logs WHERE reference_id LIKE 'ACT#%' ORDER BY CAST(SUBSTRING_INDEX(reference_id, '#', -1) AS UNSIGNED) DESC LIMIT 1");
+            $stmt->execute();
+            $stmt->bind_result($lastRefId);
+            $stmt->fetch();
+            $stmt->close();
+
+            if ($lastRefId) {
+                $lastNum = (int)substr($lastRefId, 4);
+                $newId = 'ACT#' . str_pad($lastNum + 1, 6, '0', STR_PAD_LEFT);
+            } else {
+                $newId = 'ACT#000001';
+            }
+
+            $type = 'account';
+            $operation = 'logged';
+            $details = "User [ID#" . str_pad($userId, 4, '0', STR_PAD_LEFT) . "] logged in.";
+
+            $stmt = $conn->prepare("INSERT INTO logs (reference_id, type, operation, date, details, initiator) VALUES (?, ?, ?, NOW(), ?, ?)");
+            $stmt->bind_param('sssss', $newId, $type, $operation, $details, $email);
+            $stmt->execute();
             $stmt->close();
             
             $_SESSION['success'] = 'Success! You are now logged in.';
@@ -83,6 +99,8 @@ if (isset($_POST['register'])) {
                 }
             } else if (!str_ends_with($email, '@umak.edu.ph') && !str_ends_with($email, '@gmail.com')) {
                 $_SESSION['reg-error'] = 'Error: Invalid email format.';
+            } else if (strlen($username) < 5 || strlen($username) > 20) {
+                $_SESSION['reg-error'] = 'Error: Username must be between 5 and 20 characters!';
             } else if ($_POST['secure-level'] < 2) { 
                 $_SESSION['reg-error'] = 'Error: Password is too weak!';
             } else {
@@ -135,6 +153,26 @@ if (isset($_POST['register'])) {
                 $stmt->bind_param('sssss', $newId, $type, $operation, $details, $email);
                 $stmt->execute();
                 $stmt->close();
+
+                $otp = rand(100000, 999999);
+                $stmt = $conn->prepare("UPDATE accounts SET verified = ? WHERE email = ?");
+                $stmt->bind_param("is", $otp, $email);
+                $stmt->execute();
+                $stmt->close();
+
+                $message = file_get_contents('email\new-verification-email.php');
+                $message = str_replace('(code)', $otp, $message); 
+
+                try {
+                    $mail->addAddress($email);
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Welcome to Scholar Finds!';
+                    $mail->Body    = $message;
+                    $mail->send();
+                    
+                } catch (Exception $e) {
+                    $_SESSION['reg-error'] = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
             }
         } else {
             $_SESSION['reg-error'] = 'Error! Robot verification failed, please try again.';
@@ -197,29 +235,14 @@ if (isset($_POST['fpw']) || isset($_POST['send-otp'])) {
                 $otp = rand(100000, 999999);
                 setCookie('otp-' . $email, $otp, time() + 600, '/');
 
-                $message = file_get_contents('fpw-email.php');
+                $message = file_get_contents('email\fpw-email.php');
                 $message = str_replace('not generated', $otp, $message);
                 $message = str_replace('no-time', '10 minutes', $message);
-
-                $mail = new PHPMailer(true);
                 
                 $_SESSION['femail'] = $email;
 
                 try {
-                    // Server settings
-                    $mail->isSMTP();
-                    $mail->Host       = 'smtp.gmail.com';                   // Set your SMTP server
-                    $mail->SMTPAuth   = true;
-                    $mail->Username   = 'renzjan.moncinilla@umak.edu.ph';   // SMTP username
-                    $mail->Password   = 'lqdn wude utoj smds';              // SMTP password
-                    $mail->SMTPSecure = 'tls';                              // Encryption: 'ssl' or 'tls'
-                    $mail->Port       = 587;                                // TCP port to connect to
-
-                    // Sender and recipient
-                    $mail->setFrom('no-reply@scholarfinds.com', 'Scholar Finds');
                     $mail->addAddress($email); // recipient's email
-
-                    // Content
                     $mail->isHTML(true);
                     $mail->Subject = 'Scholar Finds OTP';
                     $mail->Body    = $message;

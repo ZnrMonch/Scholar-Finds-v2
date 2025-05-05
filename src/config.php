@@ -1,4 +1,10 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'dependency/PHPMailer/src/Exception.php';
+require 'dependency/PHPMailer/src/PHPMailer.php';
+require 'dependency/PHPMailer/src/SMTP.php';
 
 // KEYS
 define('CRYPT_KEY', 'umak_scholar_finds_AY_2024-2025_');
@@ -14,6 +20,22 @@ $conn = new mysqli($host, $username, $password, $database, $port);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+}
+
+// PHP MAILER CONFIGURATION
+$mail = new PHPMailer(true);
+
+try {
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';                   // Set your SMTP server
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'renzjan.moncinilla@umak.edu.ph';   // SMTP username
+    $mail->Password   = 'lqdn wude utoj smds';              // SMTP password
+    $mail->SMTPSecure = 'tls';                              // Encryption: 'ssl' or 'tls'
+    $mail->Port       = 587;                                // TCP port to connect to
+
+    $mail->setFrom('no-reply@scholarfinds.com', 'Scholar Finds');
+} catch (Exception $e) {
 }
 
 // CRYPTOGRAPHY FUNCTIONS

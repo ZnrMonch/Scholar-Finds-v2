@@ -373,7 +373,7 @@ function logAction($conn, $operation, $itemType, $itemIds, $initiatorId) {
 
     if (count($itemIds) > 1) {
         // Summary log for bulk action
-        $details = ucfirst($operation) . " " . count($itemIds) . " " . ucfirst($itemType) . "s.";
+        $details = ucfirst($operation) . " " . count($itemIds) . " " . lcfirst($itemType) . "s.";
     } else {
         $details = ucfirst($operation) . " " . ucfirst($itemType) . " with an ID of [ID#" . str_pad($itemIds[0], 4, '0', STR_PAD_LEFT) . "].";
     }

@@ -19,9 +19,9 @@
     --animate-header-close: header-close .5s ease-in-out;
     --animate-downfadeinout: downFadeInOut 7s ease-in-out forwards;
     --animate-fadeIn: fadeIn .5s ease-in-out;
-    --animate-blur-up: blur-up 1s ease-in-out;
-    --animate-blur-left: blur-left 1s ease-in-out;
-    --animate-blur-right: blur-right 1s ease-in-out;
+    --animate-blur-up: blur-up 1s .5s ease-in-out forwards;
+    --animate-blur-left: blur-left 1s .5s ease-in-out forwards;
+    --animate-blur-right: blur-right 1s .5s ease-in-out forwards;
     --breakpoint-phone: 480px;
     --breakpoint-big-phone: 768px;
     --breakpoint-tablet: 1200px;
@@ -80,7 +80,7 @@
             opacity: 0;
             transform: translateY(20px);
         }
-        100 {
+        100% {
             filter: blur(0px);
             opacity: 1;
             transform: translateY(0);

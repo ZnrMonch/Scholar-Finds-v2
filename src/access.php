@@ -98,7 +98,7 @@ function activeForm($form, $activeForm) {
                     </span>
                     <span>
                         <label for="rusername" class="pl-2 text-neutral-400 select-none">Username</label>
-                        <input type="text" name="rusername" id="rusername" class="w-full px-2.5 py-1 rounded-lg bg-neutral-800 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] caret-neutral-500 outline-none" required <?php echo isset($regis['username']) ? 'value="' . htmlspecialchars($regis['username']) . '"' : '';?>>
+                        <input type="text" name="rusername" id="rusername" class="w-full px-2.5 py-1 rounded-lg bg-neutral-800 border-1 border-neutral-700 shadow-[0_2px_10px_rgb(0,0,0,0.5)] caret-neutral-500 outline-none" maxlength="20" required <?php echo isset($regis['username']) ? 'value="' . htmlspecialchars($regis['username']) . '"' : '';?>>
                     </span>
                     <span>
                         <label for="remail" class="pl-2 text-neutral-400 select-none">Email Address</label>
@@ -175,7 +175,13 @@ function activeForm($form, $activeForm) {
                 let alphanumericPattern = /^(?=.*[\d\W]).+$/;
                 let uppercasePattern = /[A-Z]/;
 
+                checkSecurity();
+
                 rpw.addEventListener('input', () => {
+                    checkSecurity();
+                });
+
+                function checkSecurity() {
                     let secureLevel = 0;
                     lengthPattern.test(rpw.value) ? ++secureLevel : '';
                     document.getElementById('length-pattern').classList.toggle('line-through', lengthPattern.test(rpw.value));
@@ -194,7 +200,7 @@ function activeForm($form, $activeForm) {
                     securityMsg.classList.add(secureLevel <= 1 ? 'text-red-800' : secureLevel === 2 ? 'text-yellow-500' : 'text-green-700');
                     securityMsg.innerText = secureLevel <= 1 ? 'WEAK' : secureLevel === 2 ? 'MEDIUM' : 'STRONG';
                     document.getElementById('secure-level').value = secureLevel;
-                });
+                }
 
             </script>
         </div>

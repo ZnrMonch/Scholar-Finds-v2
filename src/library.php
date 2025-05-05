@@ -57,7 +57,7 @@
     $dp = substr($_COOKIE['personalization'], 0, 2);
 ?>
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -230,7 +230,6 @@
                             <div class="w-max">     
                                 <b>Published Year:</b>
                                 <div id="year-filters" class="flex items-start gap-3">
-                                    
                                 </div>                  
                             </div>
                         </div>
@@ -343,8 +342,9 @@
                 </div>
                 
                 <!-- SPOTIFY PLAYLIST -->
-                <div id="spotify" class="hidden w-120 max-tablet:w-100 max-[1000px]:w-full animate-fadeIn drop-shadow-md">
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/53OLQuZ3VKjbp9SlfqKA40?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <div id="spotify" class="hidden relative w-120 max-tablet:w-100 max-[1000px]:w-full animate-fadeIn">
+                    <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-7.5 z-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><!-- Icon from SVG Spinners by Utkarsh Verma - https://github.com/n3r4zzurr0/svg-spinners/blob/main/LICENSE --><circle cx="4" cy="12" r="3" fill="currentColor"><animate id="svgSpinners3DotsBounce0" attributeName="cy" begin="0;svgSpinners3DotsBounce1.end+0.25s" calcMode="spline" dur="0.6s" keySplines=".33,.66,.66,1;.33,0,.66,.33" values="12;6;12"/></circle><circle cx="12" cy="12" r="3" fill="currentColor"><animate attributeName="cy" begin="svgSpinners3DotsBounce0.begin+0.1s" calcMode="spline" dur="0.6s" keySplines=".33,.66,.66,1;.33,0,.66,.33" values="12;6;12"/></circle><circle cx="20" cy="12" r="3" fill="currentColor"><animate id="svgSpinners3DotsBounce1" attributeName="cy" begin="svgSpinners3DotsBounce0.begin+0.2s" calcMode="spline" dur="0.6s" keySplines=".33,.66,.66,1;.33,0,.66,.33" values="12;6;12"/></circle></svg>
+                    <iframe class="relative z-2" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/53OLQuZ3VKjbp9SlfqKA40?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
             </div>
             <div>
@@ -482,7 +482,7 @@
                 
                 if (isGrid) {
                     return `
-                        <form class="group relative mb-2.5 tablet:mb-10 px-2.5 w-full h-45 max-tablet:h-36 max-phone:h-30 grid grid-cols-[125px_1fr] max-tablet:grid-cols-[100px_1fr] max-phone:grid-cols-[80px_1fr] gap-2.5 text-off-white">
+                        <form class="group relative mb-2.5 tablet:mb-10 px-2.5 w-full h-45 max-tablet:h-36 max-phone:h-30 grid grid-cols-[125px_1fr] max-tablet:grid-cols-[100px_1fr] max-phone:grid-cols-[80px_1fr] gap-2.5 text-off-white animate-fadeIn">
                             <div class="absolute bottom-0 w-full h-35 max-tablet:h-30 max-phone:h-25 rounded-xl bg-neutral-100 group-hover:border ${border} drop-shadow-lg z-1"></div>
                             <div class="absolute bottom-0 w-full h-35 max-tablet:h-30 max-phone:h-25 rounded-xl bg-black/40 z-2 hidden"></div>
                             <button type="submit" name="view" value="${item.thesis_id}" class="relative z-3">
@@ -504,7 +504,7 @@
                     `;
                 } else {
                     return `
-                        <form class="relative w-full px-5 p-2.5 h-25 max-big-phone:h-27.5 rounded-xl shadow-lg bg-neutral-100 border border-neutral-300 hover:border-dirty-brown/70 flex gap-2.5">
+                        <form class="relative w-full px-5 p-2.5 h-25 max-big-phone:h-27.5 rounded-xl shadow-lg bg-neutral-100 border border-neutral-300 hover:border-dirty-brown/70 flex gap-2.5 animate-fadeIn">
                             <button type="submit" name="view" value="${item.thesis_id}" class="absolute top-2.5 right-5 z-1"><svg class="size-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M120-120v-240h80v104l124-124 56 56-124 124h104v80H120Zm480 0v-80h104L580-324l56-56 124 124v-104h80v240H600ZM324-580 200-704v104h-80v-240h240v80H256l124 124-56 56Zm312 0-56-56 124-124H600v-80h240v240h-80v-104L636-580Z"/></svg></button>
                             <div class="relative flex-1 flex flex-col items-start justify-center select-text">
                                 <h3 class="font-bold text-lg leading-4 max-tablet:text-base max-big-phone:text-sm max-big-phone:leading-3 ${textColor}">${item.title} ${item.course.trim() !== "BSCS-AD" && item.course.trim() !== "BSIT-NS" ? `<i class="max-big-phone:mb-0.5 px-2 rounded-full bg-yellow-800/80 text-xs text-off-white select-none">${item.course}</i>` : ""}</h3>

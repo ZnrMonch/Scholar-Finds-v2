@@ -3,7 +3,7 @@
 $theses_sql = "SELECT thesis_id, archived, visits, published_date, course, category, title, authors, abstract, keywords FROM theses";
 $theses_result = $conn->query($theses_sql);
 $theses = [];
-$accounts_sql = "SELECT user_id, date_joined, archived, role, membership, username, name, email, password, college, yearsection, bio, bookmarks, personalization FROM accounts";
+$accounts_sql = "SELECT user_id, date_joined, archived, verified, role, membership, username, name, email, password, college, yearsection, bio, personalization, preferences, bookmarks FROM accounts";
 $accounts_result = $conn->query($accounts_sql);
 $accounts = [];
 $logs_sql = "SELECT reference_id, type, operation, date, details, initiator FROM logs";

@@ -217,10 +217,39 @@ require_once 'data.php';
             </div>
         </div>
 
-        <!-- ================================================== OVERVIEW ================================================== -->
-        <div id="dashboard-content" class="flex-1 flex max-[1000px]:flex-col gap-5 text-dirty-brown">
-            <div class="flex-1">
-                <div class="p-5 w-full bg-neutral-50 border border-neutral-300 rounded-xl shadow-lg">
+        <!-- ================================================== DASHBOARD ================================================== -->
+        <div id="dashboard-content" class="flex-1 flex max-[1000px]:flex-col gap-2.5 text-dirty-brown">
+            <div class="flex-1 flex flex-col gap-2.5">
+                <div class="flex-1 p-5 w-full bg-neutral-50 border border-neutral-300 rounded-xl shadow-lg flex flex-col">
+                    <h2 class="font-bold text-xl">Welcome!</h2>
+                    <div class="flex-1 w-full flex *:flex-1 gap-2.5">
+                        <div class="flex flex-col">
+                            <p>Scholar Finds version: <span class="font-bold">2.1.0</span></p>
+                            <p>PHP version: <span class="font-bold">8.2.12</span></p>
+                            <p>phpMyAdmin version: <span class="font-bold">5.2.1</span></p>
+                            <p>Database server type: <span class="font-bold">MariaDB</span></p>
+                            <p>Database server version: <span class="font-bold">10.4.32-MariaDB</span></p>
+                        </div>
+                        <div class="flex flex-col gap-2.5">
+                            <b class="flex items-center gap-1">
+                                <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160ZM480-80q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80Z"/></svg>
+                                <span>Notifications</span> 
+                            </b>
+                            <form action="" class="flex flex-col gap-1 *:flex *:items-center *:gap-2.5 font-semibold">
+                                <span>
+                                    <button class="px-5 py-0.5 rounded-md bg-dirty-brown text-off-white text-xs cursor-pointer hover:opacity-85 active:scale-95">Notify</button>
+                                    <p>Notify users about new website updates</p>
+                                </span>
+                                <span>
+                                    <button class="px-5 py-0.5 rounded-md bg-dirty-brown text-off-white text-xs cursor-pointer hover:opacity-85 active:scale-95">Notify</button>
+                                    <p>Notify users about newly added theses</p>
+                                </span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-1.5 p-5 w-full bg-neutral-50 border border-neutral-300 rounded-xl shadow-lg">
                     <div class="flex justify-between">
                         <h1 class="text-xl font-bold select-none">Visitors</h1>
                         <div class="rounded-lg bg-off-white border border-neutral-300 flex items-center leading-none drop-shadow-sm">
@@ -230,14 +259,13 @@ require_once 'data.php';
                                 <option value="year">This Year</option>
                             </select>
                         </div>
-
                     </div>
                     <div class="flex-1 relative h-100 max-tablet:h-80">
                         <canvas id="visitors-chart" class="!w-full !h-full absolute inset-0"></canvas>
                     </div>
                 </div>
             </div>
-            <div class="w-75 h-full flex flex-col max-[1000px]:flex-row max-big-phone:flex-col max-[1000px]:*:w-75! max-big-phone:items-center max-big-phone:w-full gap-5 *:relative *:p-5 *:pb-7 *:h-max *:rounded-xl *:flex *:flex-col *:gap-2 *:bg-neutral-50 *:border *:border-neutral-300 *:shadow-lg **:leading-none font-bold select-none">
+            <div class="w-75 h-full flex flex-col max-[1000px]:flex-row max-big-phone:flex-col max-[1000px]:*:w-75! max-big-phone:items-center max-big-phone:w-full gap-2.5 *:relative *:p-5 *:pb-7 *:h-max *:rounded-xl *:flex *:flex-col *:gap-2 *:bg-neutral-50 *:border *:border-neutral-300 *:shadow-lg **:leading-none font-bold select-none">
                 <div>
                     <div class="flex items-end justify-between">
                         <h1 class="text-xl">Accounts</h1>
@@ -361,16 +389,15 @@ require_once 'data.php';
                                 <option value="keywords">Keywords</option>
                             </select>
                         </div>
-                        <div class="p-0.5 flex items-center bg-neutral-200 border border-neutral-300 shadow-sm rounded-lg *:px-3 *:py-1 *:rounded-lg *:cursor-pointer *:duration-100 font-bold select-none text-dirty-brown">
+                        <div class="shadow-sm rounded-lg *:px-3 *:py-1 *:rounded-lg *:cursor-pointer *:duration-100 font-bold select-none text-off-white">
                             <input type="checkbox" id="tarchive-mode" class="peer" hidden>
-                            <label for="tarchive-mode" class="opacity-40 peer-checked:opacity-100">Show archived theses</label>
+                            <label for="tarchive-mode" class="size-full flex items-center text-neutral-400 bg-neutral-300 peer-checked:bg-red-900 peer-checked:text-off-white">Show archived theses</label>
                         </div>
                     </div>
 
                     <!-- CREATOR -->
                     <div class="flex justify-end">
                         <a onclick="openTCreator()" id="tcreator-backdrop" class="fixed top-0 left-0 w-screen h-screen bg-black opacity-40 hidden peer-checked:block z-4"></a>
-
                         <div id="tcreator" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-10 max-big-phone:p-5 w-200 max-big-phone:w-screen h-150 max-big-phone:h-screen max-tablet:scale-80 max-big-phone:scale-100 bg-off-white big-phone:rounded-3xl shadow-2xl shadow-black/70 hidden peer-checked:block z-5">
                             <div class="relative w-full h-full flex flex-col gap-5">
                                 <button onclick="openTCreator()" class="absolute -top-5 -right-5 p-2 cursor-pointer">
@@ -381,7 +408,6 @@ require_once 'data.php';
                                 <span class="py-5 flex flex-col gap-2 select-none">
                                     <h1 class="text-2xl font-bold text-center select-none">Append Thesis Data</h1>
                                 </span>
-
                                 <form action="cms.php" method="post" class="flex-1 w-full grid grid-cols-2 grid-rows-[1fr_auto] max-big-phone:flex max-big-phone:flex-col gap-5">
                                     <!-- LEFT COLUMN -->
                                     <div class="*:relative *:flex *:flex-col flex flex-col gap-4">
@@ -458,12 +484,11 @@ require_once 'data.php';
                                                         return;
                                                     }
 
-                                                    // Capture the values of existing authors
                                                     const authorValues = {};
                                                     for (let i = 1; i <= usedNumbers.length; i++) {
                                                         const authorInput = document.getElementById(`author${i}`);
                                                         if (authorInput) {
-                                                            authorValues[i] = authorInput.value; // Save current values
+                                                            authorValues[i] = authorInput.value;
                                                         }
                                                     }
 
@@ -492,7 +517,6 @@ require_once 'data.php';
                                                 }
                                             </script>
                                         </div>
-
                                     </div>
                                     <!-- RIGHT COLUMN -->
                                     <div class="flex-1 *:relative *:flex *:flex-col flex flex-col gap-4">
@@ -593,9 +617,9 @@ require_once 'data.php';
                                 <option value="email">Email</option>
                             </select>
                         </div>
-                        <div class="p-0.5 flex items-center bg-neutral-200 border border-neutral-300 shadow-sm rounded-lg *:px-3 *:py-1 *:rounded-lg *:cursor-pointer *:duration-100 font-bold select-none text-dirty-brown">
+                        <div class="shadow-sm rounded-lg *:px-3 *:py-1 *:rounded-lg *:cursor-pointer *:duration-100 font-bold select-none text-off-white">
                             <input type="checkbox" id="uarchive-mode" class="peer" hidden>
-                            <label for="uarchive-mode" class="opacity-40 peer-checked:opacity-100">Show archived users</label>
+                            <label for="uarchive-mode" class="size-full flex items-center text-neutral-400 bg-neutral-300 peer-checked:bg-red-900 peer-checked:text-off-white">Show archived users</label>
                         </div>
                     </div>
 
